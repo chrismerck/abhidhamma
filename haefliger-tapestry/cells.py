@@ -52,7 +52,8 @@ COMPUTED = {
               "if the bracket step failed the order would be 12"),
     (11, 4): (1, [2], 2, "computed-here", HERE + " q=4", TWO, ""),
     (12, 4): (0, [], 1, "computed-here", HERE + " q=4", TWO, "a hole away from the edge"),
-    (13, 4): (0, [2, 2], 4, "computed-here", HERE + " q=4", TWO, ""),
+    (13, 4): (0, [2, 2], 4, "computed-here", HERE + " q=4", "one exact sequence + vanishing of a secondary term",
+              "the vanishing uses pi_13(Sp(2)) = Z/4 + Z/2; if it failed the group would be Z/2. Non-zero either way"),
     # ---- q = 5
     (7, 5): (1, [], 1, "theorem", HAEF62, RE, ""),
     (8, 5): (0, [2, 2], 4, "theorem", HAEF66, RE, ""),
@@ -60,8 +61,8 @@ COMPUTED = {
     (10, 5): (0, [24, 4], 96, "computed-here", HERE + " q=5", TWO, "3-part uses beta1 = <alpha1,alpha1,alpha1>"),
     (11, 5): (1, [2, 2, 2], 8, "computed-here", HERE + " q=5", TWO, ""),
     (12, 5): (0, [2, 2], 4, "computed-here", HERE + " q=5", TWO, ""),
-    (13, 5): (0, [12, 2], 24, "computed-here", HERE + " q=5", TWO,
-              "order 24 certain; the Z4 uses nu_9 sigma_12 = 2 sigma_9 nu_16"),
+    (13, 5): (0, [12, 2], 24, "computed-here", HERE + " q=5", "one exact sequence + vanishing of a secondary term",
+              "same secondary term as C_13^4 (order would be 12 if it failed); the Z4 uses nu_9 sigma_12 = 2 sigma_9 nu_16"),
     # ---- q = 6
     (9, 6): (0, [2], 2, "theorem", HAEF66, RE, ""),
     (10, 6): (0, [], 1, "theorem", HAEF66, RE, "second-line hole"),

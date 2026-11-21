@@ -1124,8 +1124,8 @@ k,n,q,group,status,source,rank,torsion_order,primes,knotted,evidence,note
 13,14,1,Theta_14 (order 2),theorem,"Schoenflies (Alexander; Brown-Mazur + Smale), Cerf, Kervaire-Milnor",,2,,no (image),recalled; standard,image always bounds a disc; classes of parametrised embeddings = Theta_{k+1}
 13,15,2,infinitely many knot types (not a f.g. group),theorem,classical knots (k=1); Artin spinning; Kervaire 1965; Levine 1969,,,,yes,recalled; standard,
 13,16,3,Z/2 + Z/2 + Z/2 + Z/2,computed-here,"this work, DERIVATIONS.md q=3",0,16,2,yes,order certain; structure uses a Toda-bracket argument,
-13,17,4,Z/2 + Z/2,computed-here,"this work, DERIVATIONS.md q=4",0,4,2,yes,two exact sequences agree,
-13,18,5,Z/12 + Z/2,computed-here,"this work, DERIVATIONS.md q=5",0,24,2 3,yes,two exact sequences agree,order 24 certain; the Z4 uses nu_9 sigma_12 = 2 sigma_9 nu_16
+13,17,4,Z/2 + Z/2,computed-here,"this work, DERIVATIONS.md q=4",0,4,2,yes,one exact sequence + vanishing of a secondary term,the vanishing uses pi_13(Sp(2)) = Z/4 + Z/2; if it failed the group would be Z/2. Non-zero either way
+13,18,5,Z/12 + Z/2,computed-here,"this work, DERIVATIONS.md q=5",0,24,2 3,yes,one exact sequence + vanishing of a secondary term,same secondary term as C_13^4 (order would be 12 if it failed); the Z4 uses nu_9 sigma_12 = 2 sigma_9 nu_16
 13,19,6,Z/2,computed-here,"this work, DERIVATIONS.md q=6",0,2,2,yes,two exact sequences agree,
 13,20,7,Z/2,computed-here,"this work, DERIVATIONS.md q=7,8",0,2,2,yes,two exact sequences agree,
 13,21,8,Z/2,theorem,"Haefliger 1966, Differentiable embeddings of S^n in S^{n+q} for q>2",0,2,2,yes,re-derived here,
