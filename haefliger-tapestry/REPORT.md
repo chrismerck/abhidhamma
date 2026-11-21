@@ -4,67 +4,81 @@ Convention: `k` is the dimension of the knotted sphere, `n` the ambient dimensio
 `q = n - k` the codimension. `C_k^q` is the group of isotopy classes of smooth
 embeddings S^k → S^(k+q), for q ≥ 3.
 
+This is the second version. The first was written with no access to the literature.
+Haefliger's 1966 paper and Milgram's 1972 paper have now been read in full, and the
+input tables checked. What changed is listed under "Cross-check against the sources".
+
 ## What the picture shows
 
-**The knotted region is not a solid wedge. It has holes, of two kinds.**
+**The knotted region is not a solid wedge. Under its upper edge it has holes in
+three periodic families, and there is at least one isolated hole further in.**
 
-1. **A regular row of holes one step inside the upper edge.** Whenever k ≡ 2 mod 4,
-   the cell just under the edge is 0: `C_{4s+2}^{2s+2} = 0`, i.e. (k, n) = (6, 10),
-   (10, 16), (14, 22), (18, 28), … One hole every four columns, for ever. This is
-   Haefliger's 1966 result; I re-derived it here for q = 4, 6, 8.
-2. **At least one hole well inside the wedge: `C_12^4 = 0`,** the 12-sphere in the
-   16-sphere. It sits three cells below the top of its column and all its neighbours
-   are non-zero: Z/84 + Z/6 + Z/2 (codimension 3) and Z/2 + Z/2 (codimension 5) for
-   the same k; Z + Z/2 and Z/2 + Z/2 for k = 11 and k = 13 in the same codimension.
-   I found it by computation and confirmed it with two different exact sequences. I
-   could not check it against a published table (see "Sources"). One instance is not
-   a pattern, so I make no claim about where the next interior hole is.
+*The three families* (Haefliger 1966, 8.15 and Milgram 1972, Corollary G; valid for
+codimension above 7, the first family for every even q ≥ 4). Within seven cells of
+the upper edge, `C_k^q = 0` exactly when
 
-Apart from these, every cell in the determined range (all of k ≤ 13) is knotted.
-In particular the two cells you suspected were empty are not: **`C_5^3 = Z/2 + Z/2`
-and `C_6^3 = Z/2`.**
+| family | condition on q | position | first cases (k, n) |
+|---|---|---|---|
+| (a) | q even | k = 2q − 2 | (6, 10), (10, 16), (14, 22), (18, 28), … |
+| (b) | q ≡ 3 mod 4 and q ≢ 1 mod 3 | k = 2q | (22, 33), (30, 45), (46, 69), … |
+| (c) | q ≡ 6 mod 8 and q ≢ 0 mod 3 | k = 2q + 2 | (30, 44), (46, 68), (78, 116), … |
 
-**No further holes up to k = 16.** After the first pass I extended the search,
-deciding only zero or non-zero. Columns 14, 15 and 16 are now fully decided and
-contain no hole other than the edge one at (14, 22). Column 17 has two undecided
-cells (q = 6, 7) and column 18 has six. Along the way one new value turned up:
-`C_14^7 = Z/3`, a group of odd order four steps in from the edge. And the third
-diagonal (k = 2q − 1) never vanishes for any q, so the only holes within three
-steps of the edge are the known ones. Details: "Hole search beyond k = 13" below.
+Read column by column, this is a simple pattern in k with period 48:
 
-**Periodic structure that is proved at every scale:**
+- every column k ≡ 2 mod 4 has a hole in its top cell;
+- if also k ≡ 6 mod 8 and k/2 ≢ 1 mod 3, the cell below it is a hole too
+  (first at k = 22);
+- if also k ≡ 14 mod 16, a third cell below is a hole (first at k = 30, where
+  (30, 46), (30, 45) and (30, 44) are all empty).
 
-- **Threads.** The group is infinite exactly on the columns k ≡ 3 mod 4, from q = 3
-  up to the edge. One column in four, all the way to k = 10,000 and beyond.
-- **The upper edge has period 8 in k.** Reading the top non-zero cell of each
-  column: k mod 8 = 0: Z/2 + Z/2, 1: Z/2, 2: hole, 3: Z, 4: Z/4, 5: Z/2, 6: hole, 7: Z.
-  (The single exception is the start: k = 4 gives Z/12.)
+Where the mod 3 condition fails the cell is not empty but tiny: a group of odd order.
+`C_14^7 = Z/3`, computed here, is the first example.
 
-**What colouring by size shows (k ≤ 13 only, so a small sample):**
+*The isolated hole.* `C_12^4 = 0`, the 12-sphere in the 16-sphere, computed here and
+confirmed by two exact sequences. It lies outside the range of both papers. It is not
+the start of a fourth family: Milgram's periodic pattern has Z/2 in the corresponding
+position for codimension 12, 20, 28, …. It appears to be a low-codimension accident.
 
-- The large groups and almost all the odd torsion live in codimension 3, the bottom
-  diagonal. Its values run Z, 12, 4, 2, Z+6, 30, 3, 2, Z+12, 1008, 16, 12, Z+60, 240
-  for k = 3 … 16. Only two cells outside codimension 3 have odd torsion
-  (`C_10^5` and `C_13^5`, both a single Z/3).
-- Groups shrink fast as the codimension grows. For q ≥ 6 nothing larger than Z/4, or
-  Z + Z/2 on a thread, occurs.
-- Only the primes 2, 3, 5 and 7 appear. 2 is nearly everywhere; 7 appears once.
+*No other holes are known.* Every other cell that has been decided is knotted: all of
+k ≤ 16, and everything within seven cells of the upper edge.
 
-**How much is known.** Every group for k ≤ 13 (36 cells inside the wedge) plus
-codimension 3 out to k = 16; zero or non-zero for all of k ≤ 16 and part of k = 17, 18.
-Beyond that, only the wedge, the threads and three diagonals along the upper edge. The zoomed-out picture is therefore mostly "unknown" by design.
+**Other periodic structure:**
+
+- **Threads.** The group is infinite exactly on the columns k ≡ 3 mod 4.
+- **Period 8 along the edge.** For codimension above 7 the 2-primary part of the
+  first seven groups under the edge depends only on q mod 8 (Milgram, Theorem F).
+  The largest published 2-groups (Z/16 + Z/8, Z/8 + Z/4) sit three to five cells
+  below the edge.
+
+**What colouring by size shows** (fully determined block only, k ≤ 13):
+
+- The large groups and almost all the odd torsion are in codimension 3. Its values
+  run Z, 12, 4, 2, Z+6, 30, 3, 2, Z+12, 1008, 16, 12, Z+60, 240 for k = 3 … 16.
+- Groups shrink fast as the codimension grows.
+- Only the primes 2, 3, 5 and 7 appear.
+
+**How much is known.**
+
+- Every group for k ≤ 13 (36 cells inside the wedge) and codimension 3 to k = 16:
+  computed here.
+- Zero or non-zero for all of k ≤ 16.
+- For every codimension above 7: seven diagonals under the edge. The first two are
+  known exactly; for the other five only the 2-primary part is published, plus
+  whether the group vanishes.
+- Everything else is unknown, including most of the interior beyond k = 17.
 
 ## The pictures
 
 | file | what it shows |
 |---|---|
-| `tapestry_knotted.png` | knotted / unknotted / unknown, with the group written in each cell |
+| `tapestry_knotted.png` | knotted / unknotted / unknown to k = 32, group written in each cell |
 | `tapestry_order.png` | log of the torsion order, infinite groups as orange threads |
-| `tapestry_primes.png` | one panel per prime (2, 3, 5, 7): where it divides the torsion order |
-| `tapestry_zoomout_10000.png` | k up to 10,000, theorems only, with two magnified insets |
+| `tapestry_primes.png` | one panel per prime (2, 3, 5, 7) |
+| `tapestry_zoomout_10000.png` | k up to 10,000, with two magnified insets |
 | `tapestry.html` | zoomable version with all three layers; hover a cell for value, status, source |
 
-There is no conjectural layer. I did not find a heuristic I trusted enough to draw.
+A cell with a cut corner shows only the 2-primary part (that is all Milgram's table
+gives). There is no conjectural layer.
 
 ![knotted or not](tapestry_knotted.png)
 
@@ -74,182 +88,153 @@ There is no conjectural layer. I did not find a heuristic I trusted enough to dr
 
 ![zoomed out](tapestry_zoomout_10000.png)
 
-## The determined block
+## The block computed here (codimension 3 to 8)
 
-Rows are codimension q, columns are k. `·` = 0 by the unknotting theorem, **0** = a
-hole, `?` = unknown. 12 = Z/12, 2² = Z/2 + Z/2, Z+6 = Z + Z/6, (60) = a finite group
-of order 60 whose structure I did not determine.
+`·` = 0 by the unknotting theorem, **0** = a hole, `?` = unknown, `≠0` = non-zero
+with the group not determined. 12 = Z/12, 2² = Z/2 + Z/2, Z+6 = Z + Z/6, (60) = a
+finite group of order 60 whose structure was not determined. Entries in italics are
+Milgram's (2-primary part only).
 
-| q \ k | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 8 | · | · | · | · | · | · | · | · | · | · | 2 | **0** | Z+? | ? |
-| 7 | · | · | · | · | · | · | · | · | Z | 4 | 2 | ? | Z+? | ? |
-| 6 | · | · | · | · | · | · | 2 | **0** | Z+2 | 2 | 2 | ? | Z+? | ? |
-| 5 | · | · | · | · | Z | 2² | 2³ | 24·4 | Z+2³ | 2² | 12·2 | ? | Z+? | ? |
-| 4 | · | · | 2 | **0** | Z | 2 | 2 | 4 | Z+2 | **0** | 2² | ? | Z+? | ? |
-| 3 | Z | 12 | 2² | 2 | Z+6 | 30 | 3 | 2 | Z+12 | 84·6·2 | 2⁴ | 6·2 | Z+(60) | (240) |
+| q \ k | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 8 | · | · | · | · | · | · | · | · | · | · | 2 | **0** | *Z* | *2* | *2²* |
+| 7 | · | · | · | · | · | · | · | · | Z | 4 | 2 | 3 | Z+? | ≠0 | ? |
+| 6 | · | · | · | · | · | · | 2 | **0** | Z+2 | 2 | 2 | ≠0 | Z+? | ≠0 | ? |
+| 5 | · | · | · | · | Z | 2² | 2³ | 24·4 | Z+2³ | 2² | 12·2 | ≠0 | Z+? | ≠0 | ≠0 |
+| 4 | · | · | 2 | **0** | Z | 2 | 2 | 4 | Z+2 | **0** | 2² | ≠0 | Z+? | ≠0 | ≠0 |
+| 3 | Z | 12 | 2² | 2 | Z+6 | 30 | 3 | 2 | Z+12 | 84·6·2 | 2⁴ | 6·2 | Z+(60) | (240) | ≠0 |
 
-`table.csv` has one row per cell for k ≤ 64, n ≤ 100, with status, source and an
-`evidence` column saying how each value was checked.
+`table.csv` has one row per cell for k ≤ 64, n ≤ 100, with status, source, an
+`evidence` column, the 2-primary part where that is what is known, and for the cells
+computed here a comparison with Milgram's pattern.
 
 ## Your starting claims, one by one
 
 | claim | verdict |
 |---|---|
-| q = 1: no knots | **Needs two qualifications.** The image always bounds a disc for k ≠ 3. For k = 3 this is the smooth Schoenflies problem in S^4, which is open. And as parametrised embeddings (the convention in which C_k^q is a group) the classes for k ≥ 4 are in bijection with the exotic spheres Θ_{k+1}: 28 classes for k = 6, for example. They differ only by an exotic reparametrisation of the same round sphere. |
-| q = 2: always knotted | Correct for every k ≥ 1. The knot types are infinite in number and do not form a finitely generated group. |
+| q = 1: no knots | **Needs two qualifications.** The image always bounds a disc for k ≠ 3; k = 3 is the open smooth Schoenflies problem. As parametrised embeddings the classes for k ≥ 4 are the exotic spheres Θ_{k+1} (28 classes for k = 6). |
+| q = 2: always knotted | Correct. |
 | q ≥ 3: finitely generated abelian, zero when 2q > k + 3 | Correct. |
-| edge k = 2q − 3: Z for q odd, Z/2 for q even | Correct. Re-derived here for every q ≤ 8; the general argument is sketched in `DERIVATIONS.md`. |
-| `C_4^3 = Z/12` | Correct. |
-| `C_5^3 = 0` | **Wrong.** It is Z/2 + Z/2. The order 4 was derived three ways; it is not Z/4 because the map `C_5^3 → C_5^4 = Z/2` splits off the other factor. The Manifold Atlas lists this group as unknown. |
-| `C_6^3 = 0` | **Wrong.** It is Z/2. |
-| `C_6^4 = 0` | Correct. It is the first of the second-line holes. |
-| infinite exactly when k = 4j − 1 and 3 ≤ q ≤ 2j + 1 | Correct (rank 1 in that case). |
+| edge k = 2q − 3: Z for q odd, Z/2 for q even | Correct (Haefliger 1966, 8.14). |
+| `C_4^3 = Z/12` | Correct (Haefliger 8.15). |
+| `C_5^3 = 0` | **Wrong.** It is Z/2 + Z/2. |
+| `C_6^3 = 0` | **Wrong.** It is Z/2. This claim is what Milgram's Corollary G(b) would give if applied at q = 3, but his theorem is stated only for q > 7. |
+| `C_6^4 = 0` | Correct (Haefliger 8.15, by direct check). |
+| infinite exactly when k = 4j − 1 and 3 ≤ q ≤ 2j + 1 | Correct. |
 | `C_k^q ≅ π_{k+1}(G; SO, G_q)` | Correct, for q ≥ 3. |
-| "so the values reduce to homotopy groups of spheres and rotation groups" | **Too optimistic.** The groups alone are not enough. You also need the maps between them (the unstable J-homomorphism and iterated suspensions) and in places secondary information (Toda brackets). That is why the published results stop where they do. |
+| "so the values reduce to homotopy groups of spheres and rotation groups" | **Too optimistic.** You also need the maps between them and in places secondary information. |
+| Sources: Milgram's table | Read. It covers codimension above 7 only, and only the 2-primary part. |
 
-Two further things I had expected and found otherwise:
+## Cross-check against the sources
 
-- `C_7^4 = Z`, with no torsion. The inclusion S^11 ⊂ S^12 induces an isomorphism
-  `C_7^4 → C_7^5 = Z`. The Manifold Atlas lists this group as unknown.
-- `C_9^3 = Z/3` consists entirely of reparametrisations: all three classes have the
-  round S^9 as image and differ by the exotic 10-spheres of order 3.
+**Inputs.** Every homotopy group of a sphere used here (stems 0 to 19) matches the
+standard table. Every group of Sp(2) and SU(4) used matches Mimura–Toda, including
+the generators of π₁₀ to π₁₆ of Sp(2).
+
+**Values.** Milgram's Theorem F is stated for codimension above 7, so it overlaps the
+block computed here only at `C_13^8 = Z/2`, which agrees. Extending his period-8
+pattern below its stated range gives a second, informal test:
+
+- Codimensions 4, 6 and 7: all 13 cells inside his dimension range agree,
+  including `C_7^4 = Z`, `C_11^6 = Z + Z/2`, `C_12^6 = C_13^6 = C_13^7 = Z/2` and the
+  vanishing 2-part of `C_14^7`.
+- Codimension 3 and 5 differ in three cells: `C_5^3` (Z/2 + Z/2 here, Z/2 in the
+  pattern), `C_10^5` (Z/8 + Z/4 here, Z/16 + Z/8 or Z/16 + Z/4), `C_11^5`
+  (Z + (Z/2)³ here, Z + (Z/2)²). These are the codimensions where the sphere S^(q−1)
+  is S² or S⁴ and carries a Hopf fibration, which is exactly what the hypothesis
+  q > 7 excludes. I trust the values here, which use the exact groups.
+- `C_6^3`, `C_9^4`, `C_10^4`, `C_12^4` and four more also differ, but lie beyond his
+  dimension range (k ≥ 3q − 3).
+
+**Disagreements and corrections recorded:**
+
+1. *My first report.* I attributed the exact second-diagonal values for odd q to
+   Haefliger. He proves only that the group is a quotient of Z/2 + Z/2 or Z/4.
+   Equality is Milgram's (q > 7), and was computed here for q = 5 and 7.
+2. *Haefliger 8.15 as printed* says `C_{4k−2}^{2k} = 0` for all k. Skopenkov's survey
+   calls this a misprint for `C_{8k−2}^{4k} = 0`, which is what the argument gives.
+   The printed statement is true anyway: Milgram's Corollary G(a), and for q = 6 by
+   direct computation here.
+3. *Milgram's Corollary G* carries no stated lower bound on q. Read at q = 3 it would
+   give `C_6^3 = 0`; direct computation gives Z/2. It should be read with the q > 7 of
+   Theorem F.
+4. *Milgram's Corollary E* gives rank 1 for i > 2k − 3; the case i = 2k − 3 also has
+   rank 1 (Haefliger 8.14).
+5. *Milgram's table (b), last entry* is cut off in print after two alternatives.
+6. *The Manifold Atlas* (per a search snippet; the page itself still cannot be opened)
+   names `C_5^3` and `C_7^4` as the lowest-dimensional unknown groups. Here they are
+   Z/2 + Z/2 and Z. `C_7^4 = Z` matches Milgram's pattern.
 
 ## Is `C_12^4 = 0` already known?
 
-I could not find it stated anywhere, and I could not open the papers that would
-settle it. What search turned up:
+Not in anything I could read. Haefliger's paper stops at the second diagonal.
+Milgram's covers codimension above 7 and at most eight cells below the edge. The
+survey lists only the first two diagonals. So it is probably unrecorded. It is not
+deep: it follows in a few lines from Haefliger's exact sequence and Toda's tables.
 
-- Published values cover the first two diagonals completely (Haefliger 1966, 8.15)
-  and the 2-primary part on a few more diagonals (Milgram 1972, Theorem F).
-  `C_12^4` is on the eighth diagonal with q only 4, well outside the range such
-  methods reach.
-- The Manifold Atlas names `C_5^3` and `C_7^4` as the lowest-dimensional unknown
-  groups. `C_12^4` is further out, so it is presumably also unrecorded.
-- A 2021 paper (Gauniyal) says no computations have been done since Milgram.
+## Can a new column be computed from scratch?
 
-So it is probably not in the literature. That is weaker than "new": the value
-follows in a few lines from Haefliger's 1966 exact sequence and Toda's 1962 tables,
-so anyone who sat down with both would get it. The same caution applies in reverse.
-The Atlas lists two groups as unknown that I computed here (`C_5^3`, `C_7^4`). Either
-nobody wrote them down, or I have made an error I cannot see. I believe the former,
-because the arguments are short and were checked several ways, but only the sources
-can confirm it.
+In principle yes, in practice not by brute force.
 
-## Hole search beyond k = 13
+- **What a new column needs:** the homotopy groups of a handful of spheres and
+  rotation groups two or three degrees further than the last column, and how
+  particular elements in them compose and suspend.
+- **General algorithms exist** and provably terminate, but they stall after the first
+  handful of non-trivial groups.
+- **Spectral sequences are fast** for the first approximation (minutes). Turning that
+  into groups needs differentials and extension problems settled by argument, which is
+  what the published tables record.
+- **So one more column is a few dozen such facts.** The limit is knowledge, not CPU.
 
-A hole needs two maps to be bijective at once, so most cells can be ruled out with
-far less than the full group. `DERIVATIONS.md` has the argument for each cell.
-
-| q \ k | 14 | 15 | 16 | 17 | 18 |
-|---|---|---|---|---|---|
-| 10 | · | · | · | 2 | **0** |
-| 9 | · | Z | 2² | ≠0 | ? |
-| 8 | **0** | Z+? | ≠0 | ≠0 | ? |
-| 7 | 3 | Z+? | ≠0 | ? | ? |
-| 6 | ≠0 | Z+? | ≠0 | ? | ? |
-| 5 | ≠0 | Z+? | ≠0 | ≠0 | ? |
-| 4 | ≠0 | Z+? | ≠0 | ≠0 | ? |
-| 3 | 6·2 | Z+(60) | (240) | ≠0 | ≠0 |
-
-`≠0` = shown non-zero, group not determined. The two holes in this range are the
-edge holes already known.
-
-**What it costs.** The bookkeeping is nothing: every script here runs in under a
-second. The cost is the input. Each cell needs a handful of named facts about
-unstable homotopy groups of spheres and of rotation groups: which elements exist,
-their orders, what they suspend to, and what the J-homomorphism does to them.
-
-- With Toda's book, the Mimura–Toda papers and Kachi's tables for SO(n) open, I
-  would expect to finish every group to about k = 17 or 18 (roughly 40 more cells)
-  in one session, and decide zero or non-zero somewhat further.
-- Beyond stem 19 or so the inputs thin out. The unstable groups are tabulated with
-  generators only in patches (to about stem 30 for small spheres at the prime 2),
-  and each further column is closer to research than to lookup.
-- Tonight the limit was my recall of those tables, which is why column 17 stops
-  with two cells open.
+With the tables open, the bookkeeping per cell is seconds. Column 17 has two cells
+open and column 18 four; they need the J-homomorphism of SU(4) and SO(7) in degrees
+16 to 18, which I have not yet looked up.
 
 ## Method
 
 Haefliger's theorem identifies `C_k^q` with the triad homotopy group
-`π_{k+1}(G; SO, G_q)`. A triad group sits in two long exact sequences, and comparing
-codimension q with q + 1 gives a third. Writing m = q − 1 and F_m for the based
-self-equivalences of S^m (so `π_i(F_m) = π_{i+m}(S^m)`):
+`π_{k+1}(G; SO, G_q)`. Writing m = q − 1 and F_m for the based self-equivalences of
+S^m, three exact sequences were used:
 
 - **(A′)** `π_{k+1}(SO, SO_m) → π_{k+1}(F, F_m) → C_k^q → π_k(SO, SO_m) → π_k(F, F_m)`
 - **(B)** `π_{k+1}(F_m, SO_m) → π_{k+1}(G/O) → C_k^q → π_k(F_m, SO_m) → π_k(G/O)`
-- **(L)** `C_{k+1}^{q+1} → π_k(W_m) → C_k^q → C_k^{q+1} → π_{k−1}(W_m)`, where W_m is the
+- **(L)** `C_{k+1}^{q+1} → π_k(W_m) → C_k^q → C_k^{q+1} → π_{k−1}(W_m)`, with W_m the
   fibre of the (m+1)-fold suspension S^m → Ω^{m+1} S^{2m+1}.
 
-The inputs are the unstable homotopy groups of spheres with Toda's generators, the
-stable stems with the image of J, the homotopy groups of SO(3), SO(4), Sp(2) = Spin(5)
-and SU(4) = Spin(6), and how the J-homomorphism and suspensions act on generators.
-`DERIVATIONS.md` gives the computation for every cell.
-
-Each cell was computed with (A′) or (B), then checked two ways:
-
-1. **Against known values first**, before trusting it further: `C_3^3 = Z`,
-   `C_4^3 = Z/12`, `C_5^4 = Z/2`, `C_6^4 = 0`, `C_7^5 = Z`, `C_8^5 = Z/2 + Z/2`,
-   `C_9^6 = Z/2`, `C_10^6 = 0`, `C_11^7 = Z`, `C_12^7 = Z/4`, `C_13^8 = Z/2`,
-   `C_14^8 = 0`. All reproduced.
-2. **Against (L)**, which uses different input (suspensions between unstable spheres
-   rather than the J-homomorphism and stable stems). `check_layers.py` verifies that
-   the orders in the block fit together exactly along (L) for every pair of adjacent
-   codimensions; it finds exactly one consistent assignment in each case. Deliberately
-   wrong values, including the starting claim `C_5^3 = 0`, are rejected by it. It does
-   not detect every possible error (it would accept `C_12^4 = Z/2`, for instance), so
-   it is a cross-check, not a proof.
-
-One mistake was caught this way and is worth knowing about. (L) as stated is valid
-at odd primes only when m is odd. An early pass applied it with m = 2 at the prime 3
-and produced `C_7^3 = Z + Z/2` and a Z/9 inside `C_12^3`. Both were wrong;
-(A′) gives `Z + Z/6` and `Z/84 + Z/6 + Z/2`.
+Each cell was computed with (A′) or (B). `check_layers.py` then verifies that the
+orders fit together along (L), whose input is independent. It finds exactly one
+consistent assignment for each pair of adjacent codimensions and rejects most
+deliberately wrong values, though not all. `DERIVATIONS.md` has every cell.
 
 ## Sources
 
-**No primary source could be opened tonight.** The session's network policy allows
-only package registries, so the AMS, Project Euclid, JSTOR, arXiv, the Manifold Atlas,
-Wikipedia and Ranicki's archive were all refused. Web search still worked but returns
-snippets, not tables. The consequences:
-
-- **Nothing in `table.csv` has the status `from-published-table`.** Milgram's 1972
-  table was not seen, so there is no cross-check of a table value against two sources,
-  and no disagreement between sources to record.
-- Confirmed from search snippets: the triad isomorphism (Haefliger 1966, as quoted in
-  Gauniyal, arXiv:2110.13954); `C_k^q = 0` for k < 2q − 3; the finiteness and rank
-  statement (Manifold Atlas); `C_4^3 = Z/12`; `C_3^3 = Z`; `C_{4j−1}^{2j+1} = Z`;
-  that the Manifold Atlas has a Haefliger–Milgram table and names E^8(S^5) and
-  E^11(S^7) as the lowest-dimensional unknown groups; the S^3 row of the table of
-  homotopy groups of spheres up to π_15.
-- Recalled and not re-read: the second-line theorem (`C_{2q−2}^q` is 0 for q even,
-  Z/4 for q ≡ 3 mod 4 with q ≥ 7, Z/2 + Z/2 for q ≡ 1 mod 4); Toda's generators and
-  relations; the Mimura–Toda groups of Sp(2) and SU(4); the Kervaire–Milnor orders.
-
-Works the values rest on: Haefliger, *Knotted (4k−1)-spheres in 6k-space* (1962) and
-*Differentiable embeddings of S^n in S^{n+q} for q > 2* (1966); Levine, *A
-classification of differentiable knots* (1965); Toda, *Composition methods in homotopy
-groups of spheres* (1962); Mimura–Toda on Sp(2) and SU(4) (1963–64); Kervaire–Milnor
-(1963); Milgram, *On the Haefliger knot groups* (1972), not seen.
+| source | status |
+|---|---|
+| Haefliger, *Differentiable embeddings of S^n in S^{n+q} for q > 2*, Ann. of Math. 83 (1966) | read in full |
+| Milgram, *On the Haefliger knot groups*, Bull. AMS 78 (1972) | read in full |
+| Skopenkov, *Embedding and knotting of manifolds in Euclidean spaces* (arXiv:math/0604045) | relevant sections read |
+| Table of homotopy groups of spheres (Toda; as tabulated on Wikipedia) | compared entry by entry |
+| Mimura–Toda groups of Sp(2), SU(3) (as reproduced in Maruyama–Ōshima, arXiv:0712.2080) and SO(5), SO(6) (nLab) | compared |
+| Manifold Atlas, "Knots, i.e. embeddings of spheres" | still unreachable (server resets the connection); known only from a search snippet |
+| Mimura–Toda originals on Project Euclid | blocked by a bot check; used the reproductions above |
+| Toda's book (generators and relations) | not consulted; relations used are listed in `DERIVATIONS.md` |
 
 ## What is verified and what is not
 
 | tier | cells | basis |
 |---|---|---|
-| Solid | the wedge; the threads; the edge; `C_4^3`; `C_5^3 = Z/2 + Z/2`; `C_6^3 = Z/2`; `C_6^4 = C_10^6 = C_14^8 = 0` | theorem confirmed in a snippet, or two exact sequences from low-dimensional classical input |
-| Computed here, cross-checked | the rest of the block k ≤ 13, including `C_12^4 = 0` and `C_7^4 = Z` | (A′) or (B), consistent with (L); input recalled from the standard tables |
-| Computed here, one extra step | `C_9^4`, `C_10^4`, the 3-part of `C_9^5`, `C_10^5` | uses β₁ = ⟨α₁, α₁, α₁⟩. If that step failed, `C_9^4` and `C_10^4` would each gain a Z/3 and nothing else would change |
-| Computed here, one extra step | `C_13^4`, `C_13^5` | a secondary term is shown to vanish using π₁₃(Sp(2)) = Z/4 + Z/2. If that failed the orders would be 2 and 12 instead of 4 and 24. The (L) check cannot tell these apart. Both cells are non-zero either way |
-| Order certain, structure argued | `C_13^3`, `C_14^3`, `C_9^5`; the Z/4 in `C_13^5` | splitting by a Toda-bracket argument, or one of Toda's relations |
-| Order only | `C_15^3`, `C_16^3` | group structure not determined |
-| Non-zero only | `C_14^q` (q = 4, 5, 6), `C_16^q` (q = 4 … 8), `C_17^q` (q = 3, 4, 5, 8), `C_18^3`, and the third diagonal for all odd q ≥ 9 | order counts and exact sequences; `C_16^7`, `C_16^8`, `C_17^8` and the third diagonal also depend on the recalled second-line theorem |
-| Recalled theorem | second line for q ≥ 9 | Haefliger 1966, not re-read; verified here for q ≤ 8 |
+| Published and read | the wedge; the threads; the edge; second diagonal; holes of families (a), (b), (c) for q > 7 | Haefliger 8.14, 8.15; Milgram Theorem F, Corollary G |
+| Published, 2-primary part only | diagonals three to seven for q > 7 | Milgram Theorem F. Odd torsion is not given; some entries are two or three alternatives |
+| Computed here, cross-checked | the block k ≤ 13, including `C_12^4 = 0`, `C_7^4 = Z`, `C_5^3 = Z/2 + Z/2` | (A′) or (B), consistent with (L); inputs now checked against the tables; agrees with Milgram's pattern in codimensions 4, 6, 7 |
+| Computed here, one extra step | `C_9^4`, `C_10^4`, the 3-part of `C_9^5`, `C_10^5` | uses β₁ = ⟨α₁, α₁, α₁⟩; if it failed, `C_9^4` and `C_10^4` would each gain a Z/3 |
+| Computed here, one extra step | `C_13^4`, `C_13^5` | a secondary term vanishes; if it did not, the orders would be 2 and 12 instead of 4 and 24 |
+| Order certain, structure argued | `C_13^3`, `C_14^3`, `C_9^5`; the Z/4 in `C_13^5` | Toda-bracket argument or one of Toda's relations |
+| Order only | `C_15^3`, `C_16^3` | structure not determined |
+| Non-zero only | `C_14^q` (q = 4, 5, 6), `C_16^q` (q = 4 … 7), `C_17^q` (q = 3, 4, 5), `C_18^3` | order counts and exact sequences |
 | Unknown | everything else | left blank |
 
-The weakest link is that the input tables were recalled, not re-read. The safeguards
-were the known-value tests and the (L) consistency check. If you can allow access to
-the Manifold Atlas page and Milgram's paper, the first thing to compare is his third
-diagonal (k = 2q − 1) with my `C_9^5` (order 8), `C_11^6 = Z + Z/2` and
-`C_13^7 = Z/2`, and then `C_12^4 = 0`.
+Generator-level facts (what suspends to what, which compositions vanish) were recalled
+from Toda and not re-read. The group-level inputs are now all checked.
 
 ## Reproducing
 

@@ -13,7 +13,9 @@ for k in range(1, K_MAX + 1):
         rows.append([k, n, c["group"], c["status"], c["source"], c["evidence"], c["note"],
                      c["rank"] if c["rank"] != "" else -1,
                      c["torsion_order"] if c["torsion_order"] != "" else -1,
-                     c["knotted"], short_label(k, n - k)])
+                     c["knotted"], short_label(k, n - k), c["two_part"],
+                     c["two_order"] if c["two_order"] != "" else -1,
+                     1 if (c["status"] == "from-published-table" or c["group"].startswith("non-zero, of odd")) else 0])
 
 HTML = r"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,7 +51,7 @@ a{color:inherit}
 </style></head><body>
 <header><h1>Haefliger knot tapestry</h1>
 <p>Each cell is the group of isotopy classes of smooth embeddings S<sup>k</sup> → S<sup>n</sup> (codimension q = n − k).
-Scroll or pinch to zoom, drag to pan, hover a cell for its value, status and source. Complete for k ≤ 13; beyond that only general theorems are filled in and everything else is marked unknown.</p></header>
+Scroll or pinch to zoom, drag to pan, hover a cell for its value, status and source. Codimension ≤ 7 is computed (complete for k ≤ 13); for codimension ≥ 8 seven diagonals under the upper edge come from Milgram 1972 (cut corner = only the 2-primary part is published). Everything else is marked unknown.</p></header>
 <div class="bar" role="group" aria-label="Layer">
  <button data-layer="knot" aria-pressed="true">Knotted or not</button>
  <button data-layer="order" aria-pressed="false">Torsion order</button>
@@ -75,27 +77,32 @@ function dark(){const t=document.documentElement.dataset.theme;return t?t==='dar
 function ramp(o){const r=dark()?RAMPL.slice().reverse():RAMPL;const j=Math.min(9,Math.max(0,Math.round(Math.log2(o))-1));return r[j]}
 function lum(h){const c=[1,3,5].map(i=>parseInt(h.substr(i,2),16)/255);return .2126*c[0]+.7152*c[1]+.0722*c[2]}
 function style(c){ // returns {fill,thread,label,hole}
- const [k,n,g,st,src,ev,note,rank,ord,kn,lab]=c,q=n-k;let fill,thread=false,label=lab,hole=false;
+ const [k,n,g,st,src,ev,note,rank,ord,kn,lab,tp,tord,two]=c,q=n-k;let fill,thread=false,label=lab,hole=false,corner=false;
  if(layer==='knot'){
   if(q===1){fill=k===3?'url(#hatch)':'var(--special)';label=k===3?'?':''}
   else if(q===2){fill='var(--aqua)';label=''}
   else if(st==='unknown'){fill='url(#hatch)';label='?'}
   else if(kn==='no'){fill='var(--zero)';hole=2*q<=k+3;label=hole?'0':''}
-  else fill=rank===1?'var(--orange)':'var(--blue)';
+  else{fill=rank===1?'var(--orange)':'var(--blue)';corner=!!two}
  }else{
   if(q<=2){fill='var(--special)';label=''}
   else{thread=rank===1;
-   if(ord<0){fill='url(#hatch)';label=thread?'':(lab==='≠0'?lab:'?')}
-   else if(layer==='order'){fill=ord>1?ramp(ord):'var(--zero)';if(2*q>k+3)label=''}
-   else{fill=ord%prime===0?'var(--blue)':'var(--zero)';label=''}}
+   if(layer==='order'){
+    if(ord>=0){fill=ord>1?ramp(ord):'var(--zero)';hole=ord===1&&!thread&&2*q<=k+3;if(2*q>k+3)label=''}
+    else if(tord>=0){fill=tord>1?ramp(tord):'var(--zero)';corner=true}
+    else{fill='url(#hatch)';label=thread?'':(lab==='≠0'||lab.endsWith('†')?lab:'?');corner=!!two}
+   }else{label='';
+    let dv=ord>=0?(ord%prime===0):(prime===2&&tp!==''?(tord<0||tord>1):null);
+    if(dv===null)fill='url(#hatch)';else if(dv)fill='var(--blue)';else{fill='var(--zero)';hole=ord===1&&!thread&&2*q<=k+3}}}
  }
- return {fill,thread,label,hole}}
+ return {fill,thread,label,hole,corner}}
 function draw(){
  gc.textContent='';
  for(const c of D){const [k,n]=c,s=style(c),y=NM-n;
   const r=document.createElementNS(NS,'rect');r.setAttribute('x',k-.47);r.setAttribute('y',y-.47);r.setAttribute('width',.94);r.setAttribute('height',.94);
   r.setAttribute('fill',s.fill);if(s.hole){r.setAttribute('stroke','var(--ink)');r.setAttribute('stroke-width',.07)}
   r.__c=c;gc.appendChild(r);
+  if(s.corner){const t=document.createElementNS(NS,'polygon');t.setAttribute('points',`${k+.47},${y-.47} ${k+.47},${y-.15} ${k+.15},${y-.47}`);t.setAttribute('fill','var(--surface)');t.setAttribute('pointer-events','none');gc.appendChild(t)}
   if(s.thread){const t=document.createElementNS(NS,'rect');t.setAttribute('x',k-.47);t.setAttribute('y',y-.5);t.setAttribute('width',.2);t.setAttribute('height',1);t.setAttribute('fill','var(--orange)');t.setAttribute('pointer-events','none');gc.appendChild(t)}
   if(s.label){const t=document.createElementNS(NS,'text');t.setAttribute('x',k+(s.thread?.1:0));t.setAttribute('y',y);t.setAttribute('class','lab');
    let ink='var(--ink)';if(s.fill[0]==='#')ink=lum(s.fill)<.42?'#fff':'#0b0b0b';else if(s.fill==='var(--blue)'||s.fill==='var(--orange)')ink=dark()?'#0b0b0b':'#fff';
@@ -108,11 +115,11 @@ function axes(){ga.textContent='';
  const a=document.createElementNS(NS,'text');a.setAttribute('x',12);a.setAttribute('y',NM-3);a.setAttribute('class','ax');a.setAttribute('style','font-size:.6px');a.textContent='k (sphere) → on the diagonal;  n (ambient) ↑ at the left';ga.appendChild(a)}
 function legend(){const L=document.getElementById('legend');const sw=(c,t,h)=>`<span><i class="sw" style="background:${c}${h?';outline:2px solid var(--ink);outline-offset:-2px':''}"></i>${t}</span>`;
  const hatch='repeating-linear-gradient(45deg,var(--unknown),var(--unknown) 3px,var(--hatch) 3px,var(--hatch) 4px)';
- if(layer==='knot')L.innerHTML=sw('var(--blue)','knotted, finite group')+sw('var(--orange)','knotted, infinite group')+sw('var(--zero)','unknotted (0)')+sw('var(--zero)','hole: 0 inside the wedge',1)+sw(hatch,'unknown')+sw('var(--aqua)','q = 2: always knotted')+sw('var(--special)','q = 1: image unknotted');
+ if(layer==='knot')L.innerHTML=sw('var(--blue)','knotted, finite group')+sw('var(--orange)','knotted, infinite group')+sw('var(--zero)','unknotted (0)')+sw('var(--zero)','hole: 0 inside the wedge',1)+sw(hatch,'unknown')+sw('var(--surface)','cut corner: 2-primary part only')+sw('var(--aqua)','q = 2: always knotted')+sw('var(--special)','q = 1: image unknotted');
  else if(layer==='order')L.innerHTML=sw(ramp(2),'torsion order 2')+sw(ramp(32),'32')+sw(ramp(1024),'≥ 1024 (log scale)')+sw('var(--orange)','thread: infinite group')+sw('var(--zero)','torsion trivial')+sw(hatch,'torsion unknown');
  else L.innerHTML=sw('var(--blue)','prime '+prime+' divides the torsion order')+sw('var(--zero)','it does not')+sw('var(--orange)','thread: infinite group')+sw(hatch,'torsion unknown')}
 // view box: start on the determined block
-let vb;function home(){const r=svg.getBoundingClientRect(),h=27,w=h*r.width/r.height;vb={x:-.6,y:NM-27.5,w:w,h:h};apply()}
+let vb;function home(){const r=svg.getBoundingClientRect(),h=36,w=h*r.width/r.height;vb={x:-.6,y:NM-36.5,w:w,h:h};apply()}
 function apply(){svg.setAttribute('viewBox',`${vb.x} ${vb.y} ${vb.w} ${vb.h}`)}
 function zoom(f,cx,cy){const r=svg.getBoundingClientRect();const px=cx===undefined?.5:(cx-r.left)/r.width,py=cy===undefined?.5:(cy-r.top)/r.height;
  const nw=Math.min(140,Math.max(4,vb.w*f)),nh=nw*vb.h/vb.w;vb.x+=(vb.w-nw)*px;vb.y+=(vb.h-nh)*py;vb.w=nw;vb.h=nh;apply()}
@@ -127,8 +134,8 @@ svg.addEventListener('pointermove',e=>{if(pts.has(e.pointerId))pts.set(e.pointer
 function up(e){pts.delete(e.pointerId);pinch=0;if(!pts.size){drag=null;svg.classList.remove('drag')}}
 svg.addEventListener('pointerup',up);svg.addEventListener('pointercancel',up);svg.addEventListener('pointerleave',()=>tip.style.display='none');
 function hover(e){const el=document.elementFromPoint(e.clientX,e.clientY);const c=el&&el.__c;if(!c||drag&&pts.size){if(!c)tip.style.display='none';return}
- const [k,n,g,st,src,ev,note,rank,ord]=c;
- tip.innerHTML=`<b>S<sup>${k}</sup> in S<sup>${n}</sup></b> <span class="m">(q = ${n-k})</span><br>${g}<br><span class="m">status:</span> ${st}`+(ord>0&&n-k>2?`<br><span class="m">torsion order:</span> ${ord}`:'')+(src?`<br><span class="m">source:</span> ${src}`:'')+(ev?`<br><span class="m">evidence:</span> ${ev}`:'')+(note?`<br><span class="m">note:</span> ${note}`:'');
+ const [k,n,g,st,src,ev,note,rank,ord,kn,lab,tp]=c;
+ tip.innerHTML=`<b>S<sup>${k}</sup> in S<sup>${n}</sup></b> <span class="m">(q = ${n-k})</span><br>${g}<br><span class="m">status:</span> ${st}`+(ord>0&&n-k>2?`<br><span class="m">torsion order:</span> ${ord}`:'')+(tp&&ord<0?`<br><span class="m">2-primary part:</span> ${tp}`:'')+(src?`<br><span class="m">source:</span> ${src}`:'')+(ev?`<br><span class="m">evidence:</span> ${ev}`:'')+(note?`<br><span class="m">note:</span> ${note}`:'');
  tip.style.display='block';const w=document.getElementById('wrap').getBoundingClientRect();let x=e.clientX-w.left+14,y=e.clientY-w.top+14;
  if(x+350>w.width)x=Math.max(4,x-370);if(y+tip.offsetHeight>w.height)y=Math.max(4,y-tip.offsetHeight-24);tip.style.left=x+'px';tip.style.top=y+'px'}
 document.querySelectorAll('[data-layer]').forEach(b=>b.onclick=()=>{layer=b.dataset.layer;document.querySelectorAll('[data-layer]').forEach(x=>x.setAttribute('aria-pressed',x===b));document.getElementById('pl').style.display=layer==='prime'?'':'none';draw()});

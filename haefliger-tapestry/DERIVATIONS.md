@@ -261,3 +261,30 @@ For even m >= 4, pi_{2m}(W_m) has order 4 (kernel of E^inf on pi_{2m}(S^m), gene
 [i_m, eta_m] and a desuspension of [i_{m+1}, i_{m+1}]; for m = 6 it is the cokernel Z4 instead).
 The second-line theorem gives C_{2q-2}^q of order 4 as well, so the middle map is zero and
 C_k^q maps onto Z2. With the threads (q even) this shows the third diagonal has no holes.
+
+## Comparison with Milgram's Theorem F (added after reading the paper)
+
+Milgram's F_k is the fibre of SO/SO_k -> G/G_k, so pi_n(F_k) = C_n^k, and Theorem F
+lists the 2-primary part of C_{2q-3+j}^q for q > 7, j = 0..6, by q mod 8. Corollary G:
+for k < 2q + 4 the group vanishes iff (a) q even, k = 2q-2; (b) q = 3 mod 4,
+q != 1 mod 3, k = 2q; (c) q = 6 mod 8, q != 0 mod 3, k = 2q+2.
+
+Checks against the cells derived above:
+
+* C_13^8 = Z2 (j = 0, q = 8): agrees. C_14^8 = 0: agrees.
+* The pattern continued below q = 8 agrees with everything derived here for
+  q = 4, 6, 7 inside the range k < 3q - 3: Z2, 0, Z, Z2 (q = 4); Z2, 0, Z+Z2, Z2, Z2
+  (q = 6); Z, Z4, Z2, 0 (q = 7, where the 0 is the 2-part of C_14^7 = Z3).
+* C_14^7 = Z3 and "C_14^6 has 3-torsion" match the mod 3 conditions of Corollary G:
+  q = 7 = 1 mod 3 in (b), q = 6 = 0 mod 3 in (c).
+* The third-diagonal argument above (never zero) agrees with column j = 2 of Theorem F.
+* Differences inside the range, all for q = 3 and q = 5 (S^2 and S^4 carry Hopf
+  fibrations): C_5^3 = Z2^2 (pattern Z2), C_10^5 2-part Z8+Z4 (pattern Z16+Z8 or
+  Z16+Z4), C_11^5 = Z+Z2^3 (pattern Z+Z2^2).
+* C_12^4 = 0 corresponds to j = 7, where the pattern for q = 4 mod 8 has Z2.
+
+Milgram remarks that for odd p the cohomology of F_k below dimension 3k-2 has one
+generator in each dimension 4s-1. For small k this cannot hold as stated: C_4^3 = Z12
+has 3-torsion in dimension 4, and the Z3 found here in C_10^5 comes from the unstable
+class alpha1(3) alpha1(6) of S^3 inside SO_4. For q > 7 these effects lie beyond the
+first seven groups.

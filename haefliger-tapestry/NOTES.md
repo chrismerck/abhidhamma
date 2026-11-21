@@ -122,3 +122,44 @@ recalled, not re-read. Guards used:
 * Stopped at column 17/18 because the remaining cells need the homotopy of SU(4) and
   SO(7) in degrees 16-18 and unstable groups in stems 17-19, which I could not recall
   reliably.
+
+## 8. Third pass: network opened, sources read
+
+Reachable now: arXiv, Wikipedia, Ranicki's archive (Haefliger 1966), nLab, and the
+AMS PDF of Milgram's paper (through the pre-installed browser; plain download gets a
+bot-check page). Still unreachable: the Manifold Atlas and the Wayback Machine (both
+reset the connection), Project Euclid (bot check). The page-fetch tool still cannot
+resolve any of these hosts; everything was downloaded from the container.
+
+What the sources changed:
+
+* **Milgram's Theorem F and Corollary G are now in the table.** 118 cells have the
+  status `from-published-table` (2-primary part only); the holes of Corollary G and
+  the exact second-diagonal values are `theorem`.
+* **Two more hole families** (b), (c) that I did not know about. The first report's
+  "one family plus one isolated hole" was incomplete.
+* **Attribution fixed:** the exact second-diagonal values for odd q are Milgram's,
+  not Haefliger's (he proves a surjection only).
+* **Inputs verified:** sphere groups for stems 0-19 against the Wikipedia table;
+  Sp(2), SU(3), SU(4), SO(5), SO(6) groups against Maruyama-Oshima and the nLab.
+  No discrepancy found.
+* **My block vs Milgram's pattern** (he requires q > 7, so this is informal): 20
+  cells agree, 11 differ; of those inside his dimension range k < 3q - 3, all 13 in
+  codimension 4, 6, 7 agree and three in codimension 3 and 5 differ. Listed in
+  REPORT.md and in the `milgram_check` column of table.csv.
+
+Decisions:
+
+1. Cells from Milgram's table show the 2-primary part and are drawn with a cut
+   corner. They are coloured as knotted (Corollary G says exactly which vanish).
+   In the torsion-order picture the fill is the 2-primary order; with two or three
+   alternatives the cell is hatched. In the primes picture only the prime-2 panel
+   is filled for them.
+2. Where the 2-primary part is 0 and Corollary G says the group is non-zero, the
+   cell is recorded as "non-zero, of odd order".
+3. Milgram's corollaries are applied only for q > 7, as his Theorem F states.
+   For q <= 7 the values computed here stand, including where they differ from his
+   pattern.
+4. The detailed pictures now run to k = 32 so that the first double hole (k = 22)
+   and triple hole (k = 30) are visible.
+5. Did not try to get past the bot checks beyond loading the page in the browser.

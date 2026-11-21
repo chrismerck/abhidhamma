@@ -7,7 +7,7 @@ from cells import cell
 K_MAX = 64
 N_MAX = 100
 FIELDS = ["k", "n", "q", "group", "status", "source", "rank", "torsion_order", "primes", "knotted",
-          "evidence", "note"]
+          "evidence", "note", "two_part", "two_order", "milgram_check"]
 
 
 def rows():

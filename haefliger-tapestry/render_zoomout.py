@@ -10,7 +10,8 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Polygon, Patch, Rectangle
 
 from cells import cell
-from render import (SURFACE, INK, INK2, BLUE, ORANGE, AQUA, ZERO, UNKNOWN, SPECIAL, draw_cell, short_label)
+from render import (SURFACE, INK, INK2, BLUE, ORANGE, AQUA, ZERO, UNKNOWN, SPECIAL, draw_cell, short_label, two_only,
+                    CORNER_PATCH)
 
 KM = 10000
 
@@ -52,9 +53,9 @@ def inset(fig, rect, k0, k1, n0, n1, title):
                 hole = 2 * q <= k + 3
                 draw_cell(ax, k, n, ZERO, "0" if hole else None, edge=INK if hole else None, fs=7)
             elif c["rank"] == 1:
-                draw_cell(ax, k, n, ORANGE, "Z" if lab == "Z" else None, fs=7)
+                draw_cell(ax, k, n, ORANGE, None if lab == "Z+?" else lab, fs=6.0, corner=two_only(c))
             else:
-                draw_cell(ax, k, n, BLUE, lab, fs=7)
+                draw_cell(ax, k, n, BLUE, lab, fs=6.0, corner=two_only(c))
     return ax
 
 
@@ -85,31 +86,33 @@ def main(path="tapestry_zoomout_10000.png"):
     ax.text(6350, 7850, "wedge interior:\nevery 4th column proven infinite,\nthe rest unknown", fontsize=9.5, color=INK,
             ha="center", va="center", rotation=50)
     ax.text(5600, 1500, "n ≤ k: outside the grid", fontsize=9.5, color=INK2, ha="left", va="center")
-    ax.annotate("upper edge  n = (3k+3)/2:\ndecided on three diagonals,\nperiod 8 in k", xy=(3000, 4501.5),
+    ax.annotate("upper edge  n = (3k+3)/2:\nseven diagonals known (Milgram 1972),\nholes in three periodic families", xy=(3000, 4501.5),
                 xytext=(330, 6900), fontsize=9, color=INK, arrowprops=dict(arrowstyle="-", color=INK2, lw=0.7))
     ax.annotate("lower edge: q = 2 (always knotted)\nand q = 1 (image unknotted)", xy=(7600, 7602), xytext=(6000, 3300),
                 fontsize=9, color=INK, arrowprops=dict(arrowstyle="-", color=INK2, lw=0.7))
     # inset markers
     for (x, y) in ((5006, 7513), (5006, 5010)):
         ax.add_patch(Rectangle((x - 110, y - 110), 220, 220, facecolor="none", edgecolor=INK, lw=1.0, zorder=5))
-    a1 = inset(fig, [0.70, 0.575, 0.275, 0.33], 4996, 5015, 7494, 7523, "Upper edge, k = 4996 … 5015 (cells)")
-    a2 = inset(fig, [0.70, 0.215, 0.275, 0.30], 4996, 5015, 4997, 5020, "Lower edge, k = 4996 … 5015 (cells)")
+    a1 = inset(fig, [0.685, 0.56, 0.30, 0.36], 4996, 5011, 7494, 7517, "Upper edge, k = 4996 … 5011 (cells)")
+    a2 = inset(fig, [0.70, 0.235, 0.275, 0.27], 4996, 5011, 4997, 5016, "Lower edge, k = 4996 … 5011 (cells)")
     handles = [Patch(facecolor=ORANGE, label="proved infinite (k ≡ 3 mod 4, 3 ≤ q ≤ (k+3)/2)"),
-               Patch(facecolor=BLUE, label="proved finite and non-zero (≠0: value not known)"),
-               Patch(facecolor=ZERO, edgecolor=INK, label="hole: proved 0 inside the wedge (k ≡ 2 mod 4, n = 3k/2 + 1)"),
+               Patch(facecolor=BLUE, label="finite and non-zero"),
+               Patch(facecolor=ZERO, edgecolor=INK, label="hole: 0 inside the wedge"),
+               CORNER_PATCH,
                Patch(facecolor=ZERO, label="proved 0 (unknotted)"),
                Patch(facecolor=UNKNOWN, hatch="////", edgecolor="#8f8d85", label="unknown"),
                Patch(facecolor=BLEND, label="main panel only: threads and unknown blended 1 : 3"),
                Patch(facecolor=AQUA, label="q = 2: always knotted"),
                Patch(facecolor=SPECIAL, edgecolor="#d9d7d0", label="q = 1: image unknotted")]
-    fig.legend(handles=handles, loc="lower right", bbox_to_anchor=(0.985, 0.045), frameon=False, fontsize=8.6,
+    fig.legend(handles=handles, loc="lower right", bbox_to_anchor=(0.99, 0.072), frameon=False, fontsize=8.2,
                labelcolor=INK, alignment="left")
     fig.text(0.075, 0.965, "The tapestry to k = 10,000: only what general theorems give", fontsize=15, fontweight="bold",
              color=INK)
-    fig.text(0.075, 0.943, "Nothing inside the wedge is drawn from computation at this scale. Known: the wedge itself, three "
-             "diagonals along its upper edge, and the infinite threads.", fontsize=9.5, color=INK2)
-    fig.text(0.075, 0.012, "Upper-edge pattern by k mod 8:  0: Z/2+Z/2   1: Z/2   2: 0   3: Z   4: Z/4   5: Z/2   6: 0   7: Z.   "
-             "Second diagonal as recalled from Haefliger 1966 and verified here for q ≤ 8.", fontsize=8.5, color=INK2)
+    fig.text(0.075, 0.943, "Nothing inside the wedge is drawn from computation at this scale. Known: the wedge itself, seven "
+             "diagonals along its upper edge (Milgram 1972), and the infinite threads.", fontsize=9.5, color=INK2)
+    fig.text(0.075, 0.008, "Holes under the edge (codimension > 7): the top cell of every column k ≡ 2 mod 4; the next cell down too when "
+             "k ≡ 6 mod 8 and k/2 ≢ 1 mod 3;\nand a third when also k ≡ 14 mod 16.  The pattern repeats with period 48 in k.",
+             fontsize=8.5, color=INK2)
     fig.savefig(path, facecolor=SURFACE)
     plt.close(fig)
 
