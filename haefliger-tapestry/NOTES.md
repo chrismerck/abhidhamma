@@ -104,3 +104,21 @@ recalled, not re-read. Guards used:
 * Compare the block with Milgram's table and the Manifold Atlas Theorem 4.2 table.
 * Confirm or refute C_12^4 = 0, C_7^4 = Z, C_5^3 = Z/2 + Z/2 against the literature.
 * Re-read Haefliger 1966, section 8, for the exact statement of the second line.
+
+## 7. Second pass: hole search (after your question)
+
+* Searched again for `C_12^4`; nothing found. Snippets say the Manifold Atlas table
+  cites Haefliger 1966, 8.15 and Milgram 1972, Theorem F, and that Milgram treats the
+  2-primary part "for some smaller values" of 2n - 3k. I still could not read either.
+* Extended zero / non-zero decisions to k = 14..18 (see DERIVATIONS.md). No new hole
+  for k <= 16. New value C_14^7 = Z/3.
+* `C_5^3 = Z/2 + Z/2` is now proved without a Toda bracket: the map to C_5^4 splits it.
+* New table value "non-zero (group not determined)", status `computed-here`.
+  These cells are drawn as knotted with the label "≠0" and as unknown in the
+  torsion-order and primes pictures.
+* Decision: cells whose non-vanishing depends on the recalled second-line theorem
+  (C_16^7, C_16^8, C_17^8, third diagonal) are included, with that dependence written
+  in the `note` column.
+* Stopped at column 17/18 because the remaining cells need the homotopy of SU(4) and
+  SO(7) in degrees 16-18 and unstable groups in stems 17-19, which I could not recall
+  reliably.

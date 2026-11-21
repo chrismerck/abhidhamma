@@ -21,8 +21,16 @@ embeddings S^k → S^(k+q), for q ≥ 3.
    a pattern, so I make no claim about where the next interior hole is.
 
 Apart from these, every cell in the determined range (all of k ≤ 13) is knotted.
-In particular the two cells you suspected were empty are not: **`C_5^3` has order 4
+In particular the two cells you suspected were empty are not: **`C_5^3 = Z/2 + Z/2`
 and `C_6^3 = Z/2`.**
+
+**No further holes up to k = 16.** After the first pass I extended the search,
+deciding only zero or non-zero. Columns 14, 15 and 16 are now fully decided and
+contain no hole other than the edge one at (14, 22). Column 17 has two undecided
+cells (q = 6, 7) and column 18 has six. Along the way one new value turned up:
+`C_14^7 = Z/3`, a group of odd order four steps in from the edge. And the third
+diagonal (k = 2q − 1) never vanishes for any q, so the only holes within three
+steps of the edge are the known ones. Details: "Hole search beyond k = 13" below.
 
 **Periodic structure that is proved at every scale:**
 
@@ -42,9 +50,9 @@ and `C_6^3 = Z/2`.**
   Z + Z/2 on a thread, occurs.
 - Only the primes 2, 3, 5 and 7 appear. 2 is nearly everywhere; 7 appears once.
 
-**How much is known.** Everything for k ≤ 13 (36 cells inside the wedge) plus
-codimension 3 out to k = 16. Beyond that, only the wedge, the threads and the two
-edge diagonals. The zoomed-out picture is therefore mostly "unknown" by design.
+**How much is known.** Every group for k ≤ 13 (36 cells inside the wedge) plus
+codimension 3 out to k = 16; zero or non-zero for all of k ≤ 16 and part of k = 17, 18.
+Beyond that, only the wedge, the threads and three diagonals along the upper edge. The zoomed-out picture is therefore mostly "unknown" by design.
 
 ## The pictures
 
@@ -93,7 +101,7 @@ of order 60 whose structure I did not determine.
 | q ≥ 3: finitely generated abelian, zero when 2q > k + 3 | Correct. |
 | edge k = 2q − 3: Z for q odd, Z/2 for q even | Correct. Re-derived here for every q ≤ 8; the general argument is sketched in `DERIVATIONS.md`. |
 | `C_4^3 = Z/12` | Correct. |
-| `C_5^3 = 0` | **Wrong.** It has order 4 (derived three ways). A Toda-bracket argument gives Z/2 + Z/2 rather than Z/4. The Manifold Atlas lists this group as unknown. |
+| `C_5^3 = 0` | **Wrong.** It is Z/2 + Z/2. The order 4 was derived three ways; it is not Z/4 because the map `C_5^3 → C_5^4 = Z/2` splits off the other factor. The Manifold Atlas lists this group as unknown. |
 | `C_6^3 = 0` | **Wrong.** It is Z/2. |
 | `C_6^4 = 0` | Correct. It is the first of the second-line holes. |
 | infinite exactly when k = 4j − 1 and 3 ≤ q ≤ 2j + 1 | Correct (rank 1 in that case). |
@@ -106,6 +114,60 @@ Two further things I had expected and found otherwise:
   `C_7^4 → C_7^5 = Z`. The Manifold Atlas lists this group as unknown.
 - `C_9^3 = Z/3` consists entirely of reparametrisations: all three classes have the
   round S^9 as image and differ by the exotic 10-spheres of order 3.
+
+## Is `C_12^4 = 0` already known?
+
+I could not find it stated anywhere, and I could not open the papers that would
+settle it. What search turned up:
+
+- Published values cover the first two diagonals completely (Haefliger 1966, 8.15)
+  and the 2-primary part on a few more diagonals (Milgram 1972, Theorem F).
+  `C_12^4` is on the eighth diagonal with q only 4, well outside the range such
+  methods reach.
+- The Manifold Atlas names `C_5^3` and `C_7^4` as the lowest-dimensional unknown
+  groups. `C_12^4` is further out, so it is presumably also unrecorded.
+- A 2021 paper (Gauniyal) says no computations have been done since Milgram.
+
+So it is probably not in the literature. That is weaker than "new": the value
+follows in a few lines from Haefliger's 1966 exact sequence and Toda's 1962 tables,
+so anyone who sat down with both would get it. The same caution applies in reverse.
+The Atlas lists two groups as unknown that I computed here (`C_5^3`, `C_7^4`). Either
+nobody wrote them down, or I have made an error I cannot see. I believe the former,
+because the arguments are short and were checked several ways, but only the sources
+can confirm it.
+
+## Hole search beyond k = 13
+
+A hole needs two maps to be bijective at once, so most cells can be ruled out with
+far less than the full group. `DERIVATIONS.md` has the argument for each cell.
+
+| q \ k | 14 | 15 | 16 | 17 | 18 |
+|---|---|---|---|---|---|
+| 10 | · | · | · | 2 | **0** |
+| 9 | · | Z | 2² | ≠0 | ? |
+| 8 | **0** | Z+? | ≠0 | ≠0 | ? |
+| 7 | 3 | Z+? | ≠0 | ? | ? |
+| 6 | ≠0 | Z+? | ≠0 | ? | ? |
+| 5 | ≠0 | Z+? | ≠0 | ≠0 | ? |
+| 4 | ≠0 | Z+? | ≠0 | ≠0 | ? |
+| 3 | 6·2 | Z+(60) | (240) | ≠0 | ≠0 |
+
+`≠0` = shown non-zero, group not determined. The two holes in this range are the
+edge holes already known.
+
+**What it costs.** The bookkeeping is nothing: every script here runs in under a
+second. The cost is the input. Each cell needs a handful of named facts about
+unstable homotopy groups of spheres and of rotation groups: which elements exist,
+their orders, what they suspend to, and what the J-homomorphism does to them.
+
+- With Toda's book, the Mimura–Toda papers and Kachi's tables for SO(n) open, I
+  would expect to finish every group to about k = 17 or 18 (roughly 40 more cells)
+  in one session, and decide zero or non-zero somewhat further.
+- Beyond stem 19 or so the inputs thin out. The unstable groups are tabulated with
+  generators only in patches (to about stem 30 for small spheres at the prime 2),
+  and each further column is closer to research than to lookup.
+- Tonight the limit was my recall of those tables, which is why column 17 stops
+  with two cells open.
 
 ## Method
 
@@ -173,12 +235,13 @@ groups of spheres* (1962); Mimura–Toda on Sp(2) and SU(4) (1963–64); Kervair
 
 | tier | cells | basis |
 |---|---|---|
-| Solid | the wedge; the threads; the edge; `C_4^3`; `C_6^3 = Z/2`; the order of `C_5^3`; `C_6^4 = C_10^6 = C_14^8 = 0` | theorem confirmed in a snippet, or two exact sequences from low-dimensional classical input |
+| Solid | the wedge; the threads; the edge; `C_4^3`; `C_5^3 = Z/2 + Z/2`; `C_6^3 = Z/2`; `C_6^4 = C_10^6 = C_14^8 = 0` | theorem confirmed in a snippet, or two exact sequences from low-dimensional classical input |
 | Computed here, cross-checked | the rest of the block k ≤ 13, including `C_12^4 = 0` and `C_7^4 = Z` | (A′) or (B), consistent with (L); input recalled from the standard tables |
 | Computed here, one extra step | `C_9^4`, `C_10^4`, the 3-part of `C_9^5`, `C_10^5` | uses β₁ = ⟨α₁, α₁, α₁⟩. If that step failed, `C_9^4` and `C_10^4` would each gain a Z/3 and nothing else would change |
 | Computed here, one extra step | `C_13^4`, `C_13^5` | a secondary term is shown to vanish using π₁₃(Sp(2)) = Z/4 + Z/2. If that failed the orders would be 2 and 12 instead of 4 and 24. The (L) check cannot tell these apart. Both cells are non-zero either way |
-| Order certain, structure argued | `C_5^3`, `C_13^3`, `C_14^3`, `C_9^5`; the Z/4 in `C_13^5` | splitting by a Toda-bracket argument, or one of Toda's relations |
+| Order certain, structure argued | `C_13^3`, `C_14^3`, `C_9^5`; the Z/4 in `C_13^5` | splitting by a Toda-bracket argument, or one of Toda's relations |
 | Order only | `C_15^3`, `C_16^3` | group structure not determined |
+| Non-zero only | `C_14^q` (q = 4, 5, 6), `C_16^q` (q = 4 … 8), `C_17^q` (q = 3, 4, 5, 8), `C_18^3`, and the third diagonal for all odd q ≥ 9 | order counts and exact sequences; `C_16^7`, `C_16^8`, `C_17^8` and the third diagonal also depend on the recalled second-line theorem |
 | Recalled theorem | second line for q ≥ 9 | Haefliger 1966, not re-read; verified here for q ≤ 8 |
 | Unknown | everything else | left blank |
 

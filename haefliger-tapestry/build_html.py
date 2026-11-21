@@ -85,7 +85,7 @@ function style(c){ // returns {fill,thread,label,hole}
  }else{
   if(q<=2){fill='var(--special)';label=''}
   else{thread=rank===1;
-   if(ord<0){fill='url(#hatch)';label=thread?'':'?'}
+   if(ord<0){fill='url(#hatch)';label=thread?'':(lab==='≠0'?lab:'?')}
    else if(layer==='order'){fill=ord>1?ramp(ord):'var(--zero)';if(2*q>k+3)label=''}
    else{fill=ord%prime===0?'var(--blue)':'var(--zero)';label=''}}
  }

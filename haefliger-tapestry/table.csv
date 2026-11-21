@@ -391,7 +391,7 @@ k,n,q,group,status,source,rank,torsion_order,primes,knotted,evidence,note
 4,100,96,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
 5,6,1,0,theorem,"Schoenflies (Alexander; Brown-Mazur + Smale), Cerf, Kervaire-Milnor",,1,,no (image),recalled; standard,image always bounds a disc; classes of parametrised embeddings = Theta_{k+1}
 5,7,2,infinitely many knot types (not a f.g. group),theorem,classical knots (k=1); Artin spinning; Kervaire 1965; Levine 1969,,,,yes,recalled; standard,
-5,8,3,Z/2 + Z/2,computed-here,"this work, DERIVATIONS.md q=3",0,4,2,yes,order certain; structure uses a Toda-bracket argument,Manifold Atlas lists E^8(S^5) as unknown; starting claim C_5^3 = 0 is wrong
+5,8,3,Z/2 + Z/2,computed-here,"this work, DERIVATIONS.md q=3",0,4,2,yes,two exact sequences agree; splits because C_5^3 -> C_5^4 retracts onto the nu^2 class,Manifold Atlas lists E^8(S^5) as unknown; starting claim C_5^3 = 0 is wrong
 5,9,4,Z/2,theorem,"Haefliger 1966, Differentiable embeddings of S^n in S^{n+q} for q>2",0,2,2,yes,re-derived here,
 5,10,5,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
 5,11,6,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
@@ -1211,10 +1211,10 @@ k,n,q,group,status,source,rank,torsion_order,primes,knotted,evidence,note
 14,15,1,Theta_15 (order 16256),theorem,"Schoenflies (Alexander; Brown-Mazur + Smale), Cerf, Kervaire-Milnor",,16256,,no (image),recalled; standard,image always bounds a disc; classes of parametrised embeddings = Theta_{k+1}
 14,16,2,infinitely many knot types (not a f.g. group),theorem,classical knots (k=1); Artin spinning; Kervaire 1965; Levine 1969,,,,yes,recalled; standard,
 14,17,3,Z/6 + Z/2,computed-here,"this work, DERIVATIONS.md q=3",0,12,2 3,yes,order certain; structure uses a Toda-bracket argument,"uses pi_17(S^3) = Z30, pi_16(S^3) = Z6"
-14,18,4,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-14,19,5,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-14,20,6,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-14,21,7,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
+14,18,4,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,order count at the primes 2 and 3,"pi_14(F_3,SO_3) cannot inject into pi_14(G/O) = Z/2 + Z/2"
+14,19,5,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,order count at the primes 2 and 3,contains the obstruction of C_14^4
+14,20,6,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,maps onto C_14^7 = Z/3,also: 3-torsion of pi_19(S^5) is not in the image of J
+14,21,7,Z/3,computed-here,"this work, DERIVATIONS.md hole search",0,3,3,yes,one exact sequence,2-part vanishes (J_6 is onto pi_20(S^6)_(2)); the Z/3 is an unstable class of pi_20(S^6); uses Mimura-Toda SU(4) data
 14,22,8,0,theorem,"Haefliger 1966, Differentiable embeddings of S^n in S^{n+q} for q>2",0,1,,no,"recalled, not re-read tonight; verified here for q = 3..8",second-line hole
 14,23,9,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
 14,24,10,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
@@ -1382,11 +1382,11 @@ k,n,q,group,status,source,rank,torsion_order,primes,knotted,evidence,note
 16,17,1,Theta_17 (order 16),theorem,"Schoenflies (Alexander; Brown-Mazur + Smale), Cerf, Kervaire-Milnor",,16,,no (image),recalled; standard,image always bounds a disc; classes of parametrised embeddings = Theta_{k+1}
 16,18,2,infinitely many knot types (not a f.g. group),theorem,classical knots (k=1); Artin spinning; Kervaire 1965; Levine 1969,,,,yes,recalled; standard,
 16,19,3,finite of order 240 (structure not determined),computed-here,"this work, DERIVATIONS.md q=3",0,240,2 3 5,yes,one exact sequence,"Z15 + a 2-group of order 16; uses pi_19(S^3), mu.sigma = eta.rho"
-16,20,4,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-16,21,5,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-16,22,6,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-16,23,7,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-16,24,8,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
+16,20,4,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,order count at the prime 2,"pi_16(F_3,SO_3) has 2-part of order >= 4; torsion of pi_16(G/O) is Z/2"
+16,21,5,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,order count at the prime 2,contains the obstruction of C_16^4
+16,22,6,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,one exact sequence,"pi_16(SO,SO_5) has order 4, pi_16(F,F_5) = Z/2"
+16,23,7,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,maps onto the 2-part of C_16^8,depends on the recalled value C_16^9 = Z/2 + Z/2
+16,24,8,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,comparison sequence,depends on the recalled value C_16^9 = Z/2 + Z/2
 16,25,9,Z/2 + Z/2,theorem,"Haefliger 1966, Differentiable embeddings of S^n in S^{n+q} for q>2",0,4,2,yes,"recalled, not re-read tonight; verified here for q = 3..8",
 16,26,10,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
 16,27,11,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
@@ -1465,13 +1465,13 @@ k,n,q,group,status,source,rank,torsion_order,primes,knotted,evidence,note
 16,100,84,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
 17,18,1,Theta_18 (order 16),theorem,"Schoenflies (Alexander; Brown-Mazur + Smale), Cerf, Kervaire-Milnor",,16,,no (image),recalled; standard,image always bounds a disc; classes of parametrised embeddings = Theta_{k+1}
 17,19,2,infinitely many knot types (not a f.g. group),theorem,classical knots (k=1); Artin spinning; Kervaire 1965; Levine 1969,,,,yes,recalled; standard,
-17,20,3,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-17,21,4,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-17,22,5,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
+17,20,3,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,one exact sequence,eta.pi_17^S cannot cover pi_18^S = Z/8 + Z/2
+17,21,4,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,order count at the prime 2,"pi_17(F_3,SO_3) has 2-part of order >= 16; pi_17(G/O) has order 8"
+17,22,5,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,order count at the prime 2,contains the obstruction of C_17^4
 17,23,6,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 17,24,7,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-17,25,8,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-17,26,9,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
+17,25,8,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,comparison sequence,depends on the recalled second-line value C_18^10 = 0
+17,26,9,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,comparison sequence + second-line theorem (recalled),"third diagonal, q odd: the group maps onto C_k^{q+1} = Z/2"
 17,27,10,Z/2,theorem,"Haefliger 1966, Differentiable embeddings of S^n in S^{n+q} for q>2",0,2,2,yes,recalled; re-derived here (general argument),
 17,28,11,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
 17,29,12,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
@@ -1548,7 +1548,7 @@ k,n,q,group,status,source,rank,torsion_order,primes,knotted,evidence,note
 17,100,83,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
 18,19,1,Theta_19 (order 523264),theorem,"Schoenflies (Alexander; Brown-Mazur + Smale), Cerf, Kervaire-Milnor",,523264,,no (image),recalled; standard,image always bounds a disc; classes of parametrised embeddings = Theta_{k+1}
 18,20,2,infinitely many knot types (not a f.g. group),theorem,classical knots (k=1); Artin spinning; Kervaire 1965; Levine 1969,,,,yes,recalled; standard,
-18,21,3,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
+18,21,3,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,one exact sequence,pi_20(S^3) (order 48) cannot inject into the elements of order 2 of pi_18^S
 18,22,4,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 18,23,5,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 18,24,6,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
@@ -1799,7 +1799,7 @@ k,n,q,group,status,source,rank,torsion_order,primes,knotted,evidence,note
 21,29,8,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 21,30,9,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 21,31,10,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-21,32,11,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
+21,32,11,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,comparison sequence + second-line theorem (recalled),"third diagonal, q odd: the group maps onto C_k^{q+1} = Z/2"
 21,33,12,Z/2,theorem,"Haefliger 1966, Differentiable embeddings of S^n in S^{n+q} for q>2",0,2,2,yes,recalled; re-derived here (general argument),
 21,34,13,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
 21,35,14,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
@@ -2111,7 +2111,7 @@ k,n,q,group,status,source,rank,torsion_order,primes,knotted,evidence,note
 25,35,10,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 25,36,11,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 25,37,12,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-25,38,13,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
+25,38,13,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,comparison sequence + second-line theorem (recalled),"third diagonal, q odd: the group maps onto C_k^{q+1} = Z/2"
 25,39,14,Z/2,theorem,"Haefliger 1966, Differentiable embeddings of S^n in S^{n+q} for q>2",0,2,2,yes,recalled; re-derived here (general argument),
 25,40,15,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
 25,41,16,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
@@ -2407,7 +2407,7 @@ k,n,q,group,status,source,rank,torsion_order,primes,knotted,evidence,note
 29,41,12,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 29,42,13,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 29,43,14,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-29,44,15,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
+29,44,15,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,comparison sequence + second-line theorem (recalled),"third diagonal, q odd: the group maps onto C_k^{q+1} = Z/2"
 29,45,16,Z/2,theorem,"Haefliger 1966, Differentiable embeddings of S^n in S^{n+q} for q>2",0,2,2,yes,recalled; re-derived here (general argument),
 29,46,17,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
 29,47,18,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
@@ -2687,7 +2687,7 @@ k,n,q,group,status,source,rank,torsion_order,primes,knotted,evidence,note
 33,47,14,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 33,48,15,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 33,49,16,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-33,50,17,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
+33,50,17,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,comparison sequence + second-line theorem (recalled),"third diagonal, q odd: the group maps onto C_k^{q+1} = Z/2"
 33,51,18,Z/2,theorem,"Haefliger 1966, Differentiable embeddings of S^n in S^{n+q} for q>2",0,2,2,yes,recalled; re-derived here (general argument),
 33,52,19,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
 33,53,20,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
@@ -2951,7 +2951,7 @@ k,n,q,group,status,source,rank,torsion_order,primes,knotted,evidence,note
 37,53,16,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 37,54,17,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 37,55,18,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-37,56,19,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
+37,56,19,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,comparison sequence + second-line theorem (recalled),"third diagonal, q odd: the group maps onto C_k^{q+1} = Z/2"
 37,57,20,Z/2,theorem,"Haefliger 1966, Differentiable embeddings of S^n in S^{n+q} for q>2",0,2,2,yes,recalled; re-derived here (general argument),
 37,58,21,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
 37,59,22,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
@@ -3199,7 +3199,7 @@ k,n,q,group,status,source,rank,torsion_order,primes,knotted,evidence,note
 41,59,18,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 41,60,19,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 41,61,20,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-41,62,21,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
+41,62,21,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,comparison sequence + second-line theorem (recalled),"third diagonal, q odd: the group maps onto C_k^{q+1} = Z/2"
 41,63,22,Z/2,theorem,"Haefliger 1966, Differentiable embeddings of S^n in S^{n+q} for q>2",0,2,2,yes,recalled; re-derived here (general argument),
 41,64,23,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
 41,65,24,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
@@ -3431,7 +3431,7 @@ k,n,q,group,status,source,rank,torsion_order,primes,knotted,evidence,note
 45,65,20,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 45,66,21,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 45,67,22,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-45,68,23,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
+45,68,23,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,comparison sequence + second-line theorem (recalled),"third diagonal, q odd: the group maps onto C_k^{q+1} = Z/2"
 45,69,24,Z/2,theorem,"Haefliger 1966, Differentiable embeddings of S^n in S^{n+q} for q>2",0,2,2,yes,recalled; re-derived here (general argument),
 45,70,25,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
 45,71,26,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
@@ -3647,7 +3647,7 @@ k,n,q,group,status,source,rank,torsion_order,primes,knotted,evidence,note
 49,71,22,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 49,72,23,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 49,73,24,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-49,74,25,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
+49,74,25,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,comparison sequence + second-line theorem (recalled),"third diagonal, q odd: the group maps onto C_k^{q+1} = Z/2"
 49,75,26,Z/2,theorem,"Haefliger 1966, Differentiable embeddings of S^n in S^{n+q} for q>2",0,2,2,yes,recalled; re-derived here (general argument),
 49,76,27,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
 49,77,28,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
@@ -3847,7 +3847,7 @@ k,n,q,group,status,source,rank,torsion_order,primes,knotted,evidence,note
 53,77,24,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 53,78,25,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 53,79,26,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-53,80,27,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
+53,80,27,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,comparison sequence + second-line theorem (recalled),"third diagonal, q odd: the group maps onto C_k^{q+1} = Z/2"
 53,81,28,Z/2,theorem,"Haefliger 1966, Differentiable embeddings of S^n in S^{n+q} for q>2",0,2,2,yes,recalled; re-derived here (general argument),
 53,82,29,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
 53,83,30,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
@@ -4031,7 +4031,7 @@ k,n,q,group,status,source,rank,torsion_order,primes,knotted,evidence,note
 57,83,26,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 57,84,27,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 57,85,28,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-57,86,29,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
+57,86,29,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,comparison sequence + second-line theorem (recalled),"third diagonal, q odd: the group maps onto C_k^{q+1} = Z/2"
 57,87,30,Z/2,theorem,"Haefliger 1966, Differentiable embeddings of S^n in S^{n+q} for q>2",0,2,2,yes,recalled; re-derived here (general argument),
 57,88,31,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
 57,89,32,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
@@ -4199,7 +4199,7 @@ k,n,q,group,status,source,rank,torsion_order,primes,knotted,evidence,note
 61,89,28,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 61,90,29,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
 61,91,30,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
-61,92,31,finite (not determined),unknown,,0,,,unknown,,finite by the rank theorem; nothing else established here
+61,92,31,non-zero (group not determined),computed-here,"this work, DERIVATIONS.md hole search",0,,,yes,comparison sequence + second-line theorem (recalled),"third diagonal, q odd: the group maps onto C_k^{q+1} = Z/2"
 61,93,32,Z/2,theorem,"Haefliger 1966, Differentiable embeddings of S^n in S^{n+q} for q>2",0,2,2,yes,recalled; re-derived here (general argument),
 61,94,33,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,
 61,95,34,0,theorem,Haefliger 1961/1966 (unknotting for 2q > k+3),0,1,,no,confirmed in search snippet,

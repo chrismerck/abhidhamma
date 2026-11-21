@@ -49,6 +49,8 @@ def short_label(k, q):
         return ""
     if c["status"] == "unknown":
         return "?"
+    if c["group"].startswith("non-zero"):
+        return "≠0"
     if (k, q) in COMPUTED:
         rank, tors, order = COMPUTED[(k, q)][:3]
         if tors is None:
@@ -157,7 +159,7 @@ def fig_knotted(path="tapestry_knotted.png", kmax=K_MAX):
                Patch(facecolor=SPECIAL, edgecolor="#d9d7d0", label="q = 1: image always unknotted (k = 3 open)")]
     ax.legend(handles=handles, loc="lower right", bbox_to_anchor=(1.0, 0.0), frameon=False, fontsize=9,
               labelcolor=INK, title="Each cell", title_fontsize=9.5, alignment="left")
-    fig.text(0.012, 0.008, "Complete for k ≤ 13 (plus q = 3 to k = 16). Beyond that only general theorems are drawn. "
+    fig.text(0.012, 0.008, "Complete for k ≤ 13 (plus q = 3 to k = 16). Columns 14 to 17: zero or non-zero decided where possible. "
              "Sources and derivations: REPORT.md, table.csv.", fontsize=8, color=INK2)
     fig.tight_layout(rect=(0, 0.015, 0.97, 1))
     fig.savefig(path, facecolor=SURFACE)
@@ -188,7 +190,8 @@ def fig_order(path="tapestry_order.png", kmax=K_MAX):
             order = c["torsion_order"]
             thread = c["rank"] == 1
             if order == "":
-                draw_cell(ax, k, n, UNKNOWN, "?" if not thread else None, hatch="////", thread=thread)
+                draw_cell(ax, k, n, UNKNOWN, (lab if lab == "≠0" else "?") if not thread else None, hatch="////",
+                          thread=thread)
             else:
                 show = lab if 2 * q <= k + 3 else None
                 draw_cell(ax, k, n, ramp_colour(order), show, thread=thread)

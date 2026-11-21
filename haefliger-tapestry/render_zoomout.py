@@ -85,7 +85,7 @@ def main(path="tapestry_zoomout_10000.png"):
     ax.text(6350, 7850, "wedge interior:\nevery 4th column proven infinite,\nthe rest unknown", fontsize=9.5, color=INK,
             ha="center", va="center", rotation=50)
     ax.text(5600, 1500, "n ≤ k: outside the grid", fontsize=9.5, color=INK2, ha="left", va="center")
-    ax.annotate("upper edge  n = (3k+3)/2:\nvalues known on two diagonals,\nperiod 8 in k", xy=(3000, 4501.5),
+    ax.annotate("upper edge  n = (3k+3)/2:\ndecided on three diagonals,\nperiod 8 in k", xy=(3000, 4501.5),
                 xytext=(330, 6900), fontsize=9, color=INK, arrowprops=dict(arrowstyle="-", color=INK2, lw=0.7))
     ax.annotate("lower edge: q = 2 (always knotted)\nand q = 1 (image unknotted)", xy=(7600, 7602), xytext=(6000, 3300),
                 fontsize=9, color=INK, arrowprops=dict(arrowstyle="-", color=INK2, lw=0.7))
@@ -95,7 +95,7 @@ def main(path="tapestry_zoomout_10000.png"):
     a1 = inset(fig, [0.70, 0.575, 0.275, 0.33], 4996, 5015, 7494, 7523, "Upper edge, k = 4996 … 5015 (cells)")
     a2 = inset(fig, [0.70, 0.215, 0.275, 0.30], 4996, 5015, 4997, 5020, "Lower edge, k = 4996 … 5015 (cells)")
     handles = [Patch(facecolor=ORANGE, label="proved infinite (k ≡ 3 mod 4, 3 ≤ q ≤ (k+3)/2)"),
-               Patch(facecolor=BLUE, label="proved finite and non-zero, value known"),
+               Patch(facecolor=BLUE, label="proved finite and non-zero (≠0: value not known)"),
                Patch(facecolor=ZERO, edgecolor=INK, label="hole: proved 0 inside the wedge (k ≡ 2 mod 4, n = 3k/2 + 1)"),
                Patch(facecolor=ZERO, label="proved 0 (unknotted)"),
                Patch(facecolor=UNKNOWN, hatch="////", edgecolor="#8f8d85", label="unknown"),
@@ -106,7 +106,7 @@ def main(path="tapestry_zoomout_10000.png"):
                labelcolor=INK, alignment="left")
     fig.text(0.075, 0.965, "The tapestry to k = 10,000: only what general theorems give", fontsize=15, fontweight="bold",
              color=INK)
-    fig.text(0.075, 0.943, "Nothing inside the wedge is drawn from computation at this scale. Known: the wedge itself, two "
+    fig.text(0.075, 0.943, "Nothing inside the wedge is drawn from computation at this scale. Known: the wedge itself, three "
              "diagonals along its upper edge, and the infinite threads.", fontsize=9.5, color=INK2)
     fig.text(0.075, 0.012, "Upper-edge pattern by k mod 8:  0: Z/2+Z/2   1: Z/2   2: 0   3: Z   4: Z/4   5: Z/2   6: 0   7: Z.   "
              "Second diagonal as recalled from Haefliger 1966 and verified here for q ≤ 8.", fontsize=8.5, color=INK2)

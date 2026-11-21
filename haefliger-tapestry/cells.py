@@ -25,7 +25,7 @@ COMPUTED = {
     # ---- q = 3
     (3, 3): (1, [], 1, "theorem", HAEF62, RE + "; confirmed in search snippet", ""),
     (4, 3): (0, [12], 12, "theorem", HAEF66, RE + "; confirmed in search snippet", ""),
-    (5, 3): (0, [2, 2], 4, "computed-here", HERE + " q=3", BR,
+    (5, 3): (0, [2, 2], 4, "computed-here", HERE + " q=3", TWO + "; splits because C_5^3 -> C_5^4 retracts onto the nu^2 class",
              "Manifold Atlas lists E^8(S^5) as unknown; starting claim C_5^3 = 0 is wrong"),
     (6, 3): (0, [2], 2, "computed-here", HERE + " q=3", TWO, "starting claim C_6^3 = 0 is wrong"),
     (7, 3): (1, [6], 6, "computed-here", HERE + " q=3", ONE, ""),
@@ -74,6 +74,26 @@ COMPUTED = {
     (12, 7): (0, [4], 4, "theorem", HAEF66, RE, ""),
     (13, 7): (0, [2], 2, "computed-here", HERE + " q=7,8", TWO, ""),
     (13, 8): (0, [2], 2, "theorem", HAEF66, RE, ""),
+    # ---- found during the hole search beyond the block
+    (14, 7): (0, [3], 3, "computed-here", HERE + " hole search", ONE,
+              "2-part vanishes (J_6 is onto pi_20(S^6)_(2)); the Z/3 is an unstable class of pi_20(S^6); uses Mimura-Toda SU(4) data"),
+}
+
+# Cells shown to be non-zero without determining the group: (k, q) -> (evidence, note).
+NONZERO = {
+    (14, 4): ("order count at the primes 2 and 3", "pi_14(F_3,SO_3) cannot inject into pi_14(G/O) = Z/2 + Z/2"),
+    (14, 5): ("order count at the primes 2 and 3", "contains the obstruction of C_14^4"),
+    (14, 6): ("maps onto C_14^7 = Z/3", "also: 3-torsion of pi_19(S^5) is not in the image of J"),
+    (16, 4): ("order count at the prime 2", "pi_16(F_3,SO_3) has 2-part of order >= 4; torsion of pi_16(G/O) is Z/2"),
+    (16, 5): ("order count at the prime 2", "contains the obstruction of C_16^4"),
+    (16, 6): ("one exact sequence", "pi_16(SO,SO_5) has order 4, pi_16(F,F_5) = Z/2"),
+    (16, 7): ("maps onto the 2-part of C_16^8", "depends on the recalled value C_16^9 = Z/2 + Z/2"),
+    (16, 8): ("comparison sequence", "depends on the recalled value C_16^9 = Z/2 + Z/2"),
+    (17, 3): ("one exact sequence", "eta.pi_17^S cannot cover pi_18^S = Z/8 + Z/2"),
+    (17, 4): ("order count at the prime 2", "pi_17(F_3,SO_3) has 2-part of order >= 16; pi_17(G/O) has order 8"),
+    (17, 5): ("order count at the prime 2", "contains the obstruction of C_17^4"),
+    (17, 8): ("comparison sequence", "depends on the recalled second-line value C_18^10 = 0"),
+    (18, 3): ("one exact sequence", "pi_20(S^3) (order 48) cannot inject into the elements of order 2 of pi_18^S"),
 }
 
 # Orders of the Kervaire-Milnor groups Theta_n, n = 1..20 (standard table).
@@ -165,6 +185,15 @@ def cell(k, q):
         else:
             d.update(group="Z/4", status="theorem", source=HAEF66, rank=0, torsion_order=4, primes="2",
                      knotted="yes", evidence=ev)
+        return d
+    if (k, q) in NONZERO or (k % 4 == 1 and k == 2 * q - 1):
+        if (k, q) in NONZERO:
+            ev, note = NONZERO[(k, q)]
+        else:
+            ev = "comparison sequence + second-line theorem (recalled)"
+            note = "third diagonal, q odd: the group maps onto C_k^{q+1} = Z/2"
+        d.update(group="non-zero (group not determined)", status="computed-here", source=HERE + " hole search",
+                 rank=0, knotted="yes", evidence=ev, note=note)
         return d
     if k % 4 == 3:
         d.update(group="Z + finite (torsion not determined)", status="theorem",
