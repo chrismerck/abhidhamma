@@ -1,0 +1,165 @@
+# NOTES — running log for the Haefliger knot tapestry
+
+Convention used everywhere: `k` = dimension of the knotted sphere, `n` = ambient
+dimension, `q = n - k` = codimension. `C_k^q` = isotopy classes of smooth
+embeddings S^k -> S^(k+q) (Haefliger's notation, a group for q >= 3).
+
+## 1. Source access (logged as it happened)
+
+The session's network policy allows package registries only. Every literature
+host was refused, both for direct download and for page fetching:
+
+| host | what I wanted | result |
+|---|---|---|
+| www.ams.org | Milgram 1972, Bull. AMS 78, 861-865 (the table) | blocked |
+| projecteuclid.org | same paper; Mimura-Toda papers | blocked |
+| webhomes.maths.ed.ac.uk / www.maths.ed.ac.uk | Ranicki's archive copy of Haefliger | blocked |
+| www.map.mpim-bonn.mpg.de | Manifold Atlas "Knots, i.e. embeddings of spheres" | blocked |
+| arxiv.org | Skopenkov survey math/0604045; Gauniyal 2110.13954 | blocked |
+| en.wikipedia.org | table of homotopy groups of spheres | blocked |
+| www.jstor.org | Haefliger 1962, 1966; Levine 1965 | blocked |
+
+I did not ask for the policy to be changed (that needs an approval while you
+are asleep). What still worked was web search, which returns short snippets of
+pages but not their tables. So:
+
+* No published table was read tonight. Nothing in `table.csv` has the status
+  `from-published-table`.
+* Statements I could confirm from search snippets are listed in section 2.
+* Everything else is derived here from Haefliger's exact sequences, using
+  classical homotopy-group inputs that I recalled and then cross-checked as
+  described in section 3.
+
+## 2. What search snippets confirmed (secondary evidence, not full texts)
+
+* Haefliger 1966: C_k^q is isomorphic to pi_{k+1}(SG; SO, SG_q) for q >= 3
+  (quoted in Gauniyal, arXiv:2110.13954).
+* C_k^q = 0 for k < 2q - 3 (same source).
+* Manifold Atlas: for n - k >= 3 the group is finite unless k = 4j-1 and
+  n <= 6j, when it is Z plus a finite group.
+* E^7(S^4) = C_4^3 = Z/12; E^6(S^3) = C_3^3 = Z; C_{4j-1}^{2j+1} = Z for j >= 1.
+* Manifold Atlas has a "Theorem 4.2 (Haefliger-Milgram)" table (cell contents
+  not retrievable) and states that the lowest-dimensional unknown groups are
+  E^8(S^5) = C_5^3 and E^11(S^7) = C_7^4.
+* Gauniyal (2021): "to the best of our knowledge, no computations were done
+  ever since" Milgram.
+* The S^3 row of the table of homotopy groups of spheres through pi_15(S^3)
+  (matches the values used here).
+
+## 3. How the recalled inputs were guarded
+
+The homotopy-group tables (Toda; Mimura-Toda; stable stems; Kervaire-Milnor) were
+recalled, not re-read. Guards used:
+
+* Known-value tests before extending: C_3^3, C_4^3, C_5^4, C_6^4, C_7^5, C_8^5, C_9^6,
+  C_10^6, C_11^7, C_12^7, C_13^8, C_14^8 all reproduced.
+* `check_layers.py`: the orders of the whole block must fit the comparison sequence
+  (L), whose input (suspension maps between unstable spheres) is independent of the
+  input of (A')/(B) (J-homomorphism, stable stems). Passes with a unique assignment
+  for each pair of adjacent codimensions. Perturbed values are rejected in most cases
+  (not all: see REPORT.md).
+* Search snippet for the S^3 row of the table through pi_15.
+
+## 4. Decisions made without asking
+
+1. **No network-access request.** It would have raised an approval prompt while you
+   sleep. Worked from search snippets and derivation instead.
+2. **Status column.** The four statuses you named are used as given. Because no table
+   could be read, `from-published-table` never occurs. An extra `evidence` column says
+   how each value was checked (snippet, re-derived, two sequences, recalled only).
+3. **Recalled theorems are still labelled `theorem`,** with the evidence column saying
+   "recalled, not re-read". This applies to the second line k = 2q-2 for q >= 9.
+   It is drawn in the zoomed-out picture with that caveat in the caption.
+4. **Stopped the full block at k = 13.** Column 14 needs the J-homomorphism of SU(4)
+   in degrees 14-15 and unstable groups in stems 14-15, which I could not recall
+   reliably enough. Codimension 3 is cleaner (SO_2 has no higher homotopy), so that
+   row continues to k = 16; for k = 15, 16 only the order is given.
+5. **q = 1 row.** Shown as "image unknotted", with k = 3 unknown (smooth Schoenflies
+   in S^4). The table records that parametrised classes are Theta_{k+1}; orders are
+   filled in only for k + 1 <= 20.
+6. **q = 2 row.** Own colour, no group value (the knot types do not form a finitely
+   generated group).
+7. **Partial knowledge.** Where only the order is known the cell says so; where a
+   thread cell's torsion is unknown it is drawn as infinite with hatched torsion.
+   Cells off the threads beyond the block are finite by the rank theorem but are
+   otherwise left unknown, including whether they are zero.
+8. **Primes picture as four panels,** one per prime, instead of one multi-colour map:
+   more than three hues in a grid cannot be made colour-blind safe.
+9. **No conjectural layer.** Nothing I could draw beyond the block was better than a
+   guess.
+10. **Axes are (k, n)** as you asked; the report's table uses (k, q) because it is
+    more compact.
+11. **Files live in `haefliger-tapestry/`** inside the repository.
+
+## 5. Corrections made during the run
+
+* (L) was first applied at the prime 3 with m = 2, where it is not valid. This gave
+  C_7^3 = Z + Z/2 and a Z/9 in C_12^3. Fixed with (A'): Z + Z/6 and Z/84 + Z/6 + Z/2.
+* My own recollection "C_7^4 = Z + Z/12" was wrong: (A') bounds the torsion by 4 and
+  a five-lemma argument on (B) gives C_7^4 = C_7^5 = Z.
+* First count of determined cells in the report (55) was wrong; it is 36.
+
+## 6. Open items a reader with library access could close quickly
+
+* Compare the block with Milgram's table and the Manifold Atlas Theorem 4.2 table.
+* Confirm or refute C_12^4 = 0, C_7^4 = Z, C_5^3 = Z/2 + Z/2 against the literature.
+* Re-read Haefliger 1966, section 8, for the exact statement of the second line.
+
+## 7. Second pass: hole search (after your question)
+
+* Searched again for `C_12^4`; nothing found. Snippets say the Manifold Atlas table
+  cites Haefliger 1966, 8.15 and Milgram 1972, Theorem F, and that Milgram treats the
+  2-primary part "for some smaller values" of 2n - 3k. I still could not read either.
+* Extended zero / non-zero decisions to k = 14..18 (see DERIVATIONS.md). No new hole
+  for k <= 16. New value C_14^7 = Z/3.
+* `C_5^3 = Z/2 + Z/2` is now proved without a Toda bracket: the map to C_5^4 splits it.
+* New table value "non-zero (group not determined)", status `computed-here`.
+  These cells are drawn as knotted with the label "≠0" and as unknown in the
+  torsion-order and primes pictures.
+* Decision: cells whose non-vanishing depends on the recalled second-line theorem
+  (C_16^7, C_16^8, C_17^8, third diagonal) are included, with that dependence written
+  in the `note` column.
+* Stopped at column 17/18 because the remaining cells need the homotopy of SU(4) and
+  SO(7) in degrees 16-18 and unstable groups in stems 17-19, which I could not recall
+  reliably.
+
+## 8. Third pass: network opened, sources read
+
+Reachable now: arXiv, Wikipedia, Ranicki's archive (Haefliger 1966), nLab, and the
+AMS PDF of Milgram's paper (through the pre-installed browser; plain download gets a
+bot-check page). Still unreachable: the Manifold Atlas and the Wayback Machine (both
+reset the connection), Project Euclid (bot check). The page-fetch tool still cannot
+resolve any of these hosts; everything was downloaded from the container.
+
+What the sources changed:
+
+* **Milgram's Theorem F and Corollary G are now in the table.** 118 cells have the
+  status `from-published-table` (2-primary part only); the holes of Corollary G and
+  the exact second-diagonal values are `theorem`.
+* **Two more hole families** (b), (c) that I did not know about. The first report's
+  "one family plus one isolated hole" was incomplete.
+* **Attribution fixed:** the exact second-diagonal values for odd q are Milgram's,
+  not Haefliger's (he proves a surjection only).
+* **Inputs verified:** sphere groups for stems 0-19 against the Wikipedia table;
+  Sp(2), SU(3), SU(4), SO(5), SO(6) groups against Maruyama-Oshima and the nLab.
+  No discrepancy found.
+* **My block vs Milgram's pattern** (he requires q > 7, so this is informal): 20
+  cells agree, 11 differ; of those inside his dimension range k < 3q - 3, all 13 in
+  codimension 4, 6, 7 agree and three in codimension 3 and 5 differ. Listed in
+  REPORT.md and in the `milgram_check` column of table.csv.
+
+Decisions:
+
+1. Cells from Milgram's table show the 2-primary part and are drawn with a cut
+   corner. They are coloured as knotted (Corollary G says exactly which vanish).
+   In the torsion-order picture the fill is the 2-primary order; with two or three
+   alternatives the cell is hatched. In the primes picture only the prime-2 panel
+   is filled for them.
+2. Where the 2-primary part is 0 and Corollary G says the group is non-zero, the
+   cell is recorded as "non-zero, of odd order".
+3. Milgram's corollaries are applied only for q > 7, as his Theorem F states.
+   For q <= 7 the values computed here stand, including where they differ from his
+   pattern.
+4. The detailed pictures now run to k = 32 so that the first double hole (k = 22)
+   and triple hole (k = 30) are visible.
+5. Did not try to get past the bot checks beyond loading the page in the browser.
