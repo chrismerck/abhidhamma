@@ -180,3 +180,19 @@ For m odd it is Z2 ([i_m,i_m] has order 2 when m is not 1, 3, 7; for m = 3, 7
 the Z2 is instead the cokernel of E^inf on pi_{2m}(S^m), the Hopf-invariant-one
 class nu or sigma not desuspending). This reproduces Haefliger's Z (q odd), Z2 (q even).
 Checked cell by cell for q = 3..8 above.
+
+## q = 3 continued (k = 14, 15, 16), by (A')
+
+Extra input: pi_16(S^3) = Z6, pi_17(S^3) = Z30 {eps_3 nu_11^2}, pi_18(S^3) = Z30 {epsbar_3},
+pi_19(S^3) = Z6+Z2 {mu_3 sigma_12, eta_3 epsbar_4}; stable: eps.nu = 0, epsbar = eta.kappa,
+eta^2.kappa = 0 (it lies in Adams filtration >= 7 because d_2(e_0) = h_1^2 d_0, and it maps
+to 0 in the image-of-J spectrum, so it is not eta.rho), mu.sigma = eta.rho, eta^3 = 4 nu.
+
+| k | computation | C_k^3 |
+|---|---|---|
+| 14 | pi_15(F,F_2)/J(Z): left with Z2{eta.kappa} and ker = Z6; splits | Z6+Z2 |
+| 15 | 0 -> pi_16(F,F_2)/<eta.rho> (order 60) -> C -> 480Z -> 0 | Z + (order 60) |
+| 16 | = pi_17(F,F_2)/<eta^2.rho>: Z2^3{eta.eta*, nu.kappa, mubar} by Z30 | order 240 |
+
+The orders for k = 15, 16 do not depend on which of the image of pi_19(S^2) or the
+image of J kills eta^2.rho.
