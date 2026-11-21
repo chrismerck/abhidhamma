@@ -150,7 +150,7 @@ def fig_knotted(path="tapestry_knotted.png", kmax=K_MAX):
                 draw_cell(ax, k, n, ORANGE, lab)
             else:
                 draw_cell(ax, k, n, BLUE, lab)
-    handles = [Patch(facecolor=BLUE, label="knotted: finite non-zero group"),
+    handles = [Patch(facecolor=BLUE, label="knotted: finite non-zero group (≠0 = non-zero, group not determined)"),
                Patch(facecolor=ORANGE, label="knotted: infinite group (rank 1)"),
                Patch(facecolor=ZERO, label="unknotted: group is 0"),
                Patch(facecolor=ZERO, edgecolor=INK, label="hole: group is 0 inside the wedge"),
